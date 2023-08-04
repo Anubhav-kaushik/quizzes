@@ -91,6 +91,23 @@ function backlink(href) {
     return linkBlock;
 }
 
+function signature() {
+    const signature = document.createElement('a');
+    signature.innerHTML = `created by <span id="creator" class="handwritten">Anubhav Sharma</span>`
+    signature.setAttribute('href', '');
+
+    signature.style.position = 'absolute';
+    signature.style.right = '45%';
+    signature.style.top = '1rem';
+    signature.style.fontSize = '1rem';
+    signature.style.fontWeight = 'bold';
+    signature.style.cursor = 'pointer';
+    signature.style.color = 'white';
+    signature.style.textDecoration = 'none';
+
+    return signature;
+}
+
 async function run(tier) {
     await sleep(1.5);
     const result = main(page, '.section-cntnr', '.section-lbl', '.rw', markingScheme, tier);
