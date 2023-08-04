@@ -114,7 +114,7 @@ async function run(tier) {
 
     const mainBody = document.querySelector('body');
     mainBody.innerHTML = initialTabBlock().outerHTML;
-    mainBody.append(backlink('/'))
+    mainBody.append(backlink('https://anubhav-kaushik.github.io/quizzes/'))
 
     const finalData = {
         'Quiz': createQuiz(result['answerKeyDict'], `${result['candidateInfo']['Exam Date']} - ${result['candidateInfo']['Exam Time']}`)
