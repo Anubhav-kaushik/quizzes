@@ -1,0 +1,50 @@
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-inline: 1em;
+    padding: 0.5em;
+    border-radius: 10px;
+    background-color: rgba(148, 140, 255, 0.1);
+    border: 2px solid rgb(148, 140, 255);
+    max-width: fit-content;
+}
+
+fieldset legend {
+    font-size: 1.5em;
+}
+
+fieldset input {
+    height: 1.5em;
+    font-size: 1.2em;
+    background-color: rgba(0, 0, 0, 0.01);
+    border: 1px solid gray;
+    padding-inline: 0.5em;
+}
+
+fieldset label {
+    display: none;
+}
+
+.last-field-level {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 280px;
+    justify-content: space-around;
+}
+
+.last-field-level>p {
+    border: 2px solid black;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+
+.last-field-level>p>button {
+    border: 1px solid #532fff;
+    border-radius: 0.5em;
+    padding: 0.25em 0.5em;
+    background: #532fff;
+    color: white;
+    cursor: pointer;
+    margin-left: 0.5em;
+}

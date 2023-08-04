@@ -75,14 +75,14 @@ addStyleSheets(styleSheets);
 addScripts(scripts);
 
 async function run(tier) {
-    await sleep(3);
+    await sleep(1.5);
     const result = main(page, '.section-cntnr', '.section-lbl', '.rw', markingScheme, tier);
 
     const mainBody = document.querySelector('body');
     mainBody.innerHTML = initialTabBlock().outerHTML;
 
     const finalData = {
-        'Quiz': createQuiz(result['answerKeyDict'], `${result['candidateInfo']['Exam Name']}<br>(${result['candidateInfo']['Exam Time']})`)
+        'Quiz': createQuiz(result['answerKeyDict'], `${result['candidateInfo']['Exam Date']} - ${result['candidateInfo']['Exam Time']}`)
     }
 
     addTabs(finalData, '.tabs-widget .tabs', '.tabs-widget .tabs-content')
