@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+
+    <script>
+        async function sleep(s) {
+            return new Promise(resolve => setTimeout(resolve, s * 1000));
+        }
+        async function startLoading(time) {
+            const loadingScreen = document.createElement('div');
+            loadingScreen.style.width = '100%';
+            loadingScreen.style.height = '100%';
+            loadingScreen.style.position = 'absolute';
+            loadingScreen.style.top = '0';
+            loadingScreen.style.left = '0';
+            loadingScreen.style.zIndex = '1001';
+            loadingScreen.style.background = 'black';
+
+            let interval = 0.5,
+                curTime = 0;
+
+            loadingScreen.style.transition = `background ${interval}s`;
+
+            const body = document.querySelector('body');
+            body.appendChild(loadingScreen);
+            body.style.overflow = 'hidden';
+
+            while (curTime < time) {
+                let h, s, l;
+                h = Math.floor(Math.random() * 360);
+                s = Math.floor(Math.random() * 100);
+                l = Math.floor(Math.random() * 100);
+
+                loadingScreen.style.background = `hsl(${h}, ${s}%, ${l}%)`
+                await sleep(interval);
+
+                curTime += interval;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        startLoading(3);
+    </script>
+
+    <div></div>
+
+    <script src="../../run.js">
+    </script>
+    <script>
+        run('tier1')
+    </script>
+</body>
+
+</html>
