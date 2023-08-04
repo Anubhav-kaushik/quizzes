@@ -74,18 +74,37 @@ const styleSheets = [
 addStyleSheets(styleSheets);
 addScripts(scripts);
 
+function backlink(href) {
+    const linkBlock = document.createElement('a');
+    linkBlock.innerHTML = `Home`
+    linkBlock.setAttribute('href', href);
+
+    linkBlock.style.position = 'absolute';
+    linkBlock.style.right = '2rem';
+    linkBlock.style.top = '1rem';
+    linkBlock.style.fontSize = '1rem';
+    linkBlock.style.fontWeight = 'bold';
+    linkBlock.style.cursor = 'pointer';
+    linkBlock.style.color = 'white';
+    linkBlock.style.textDecoration = 'none';
+
+    return linkBlock;
+}
+
 async function run(tier) {
     await sleep(1.5);
     const result = main(page, '.section-cntnr', '.section-lbl', '.rw', markingScheme, tier);
 
     const mainBody = document.querySelector('body');
     mainBody.innerHTML = initialTabBlock().outerHTML;
+    mainBody.append(backlink('/'))
 
     const finalData = {
         'Quiz': createQuiz(result['answerKeyDict'], `${result['candidateInfo']['Exam Date']} - ${result['candidateInfo']['Exam Time']}`)
     }
 
     addTabs(finalData, '.tabs-widget .tabs', '.tabs-widget .tabs-content')
+    
 }
 
 
