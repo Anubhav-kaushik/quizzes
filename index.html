@@ -354,6 +354,33 @@
 
 
     </main>
+
+    <script src="style.js"></script>
+    <script>
+        // format paragraph tags with or without buttons
+        const ifContainsButton = {
+            'cursor': 'default',
+            'background': 'rgba(148, 140, 255, 0.15)',
+            'transition': 'all 0.25s ease',
+        }
+
+        const ifNotContainsButton = {
+            'cursor': 'not-allowed',
+            'background': 'rgba(244, 40, 40, 0.5)',
+            'border-color': 'rgb(244, 40, 40)',
+            'transition': 'all 0.25s ease',
+            'transition-origin': 'bottom',
+            'color': 'white',
+        }
+
+        const defaultStyle = {
+            'background': 'transparent',
+            'color': 'black',
+            'border-color': 'rgb(148, 140, 255)',
+        }
+
+        conditionalStylingOnHover('fieldset>p', 'button', ifContainsButton, ifNotContainsButton, defaultStyle);
+    </script>
 </body>
 
 </html>
