@@ -68,7 +68,7 @@ const EXAM_SCHEMA = {
                         "incorrect": -1,
                         "unattempted": 0
                     },
-                    "time_allotted": 30
+                    "time_allotted": 40
                 },
                 "General Awareness": {
                     "question_count": 25,
@@ -77,7 +77,7 @@ const EXAM_SCHEMA = {
                         "incorrect": -1,
                         "unattempted": 0
                     },
-                    "time_allotted": 30
+                    "time_allotted": 20
                 },
                 "Computer Knowledge Module": {
                     "question_count": 15,
