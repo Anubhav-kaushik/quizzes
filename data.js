@@ -34013,10 +34013,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-tier-i-12-sep-2025-shift-2-paper": {
-        "title": "SSC CGL Tier I 12 Sep 2025 Shift 2 Paper",
+        "title": "Combined Graduate level Examination 2025 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "12.09.2025",
+        "exam_sch_time": "Shift 2",
         "questions": [
             {
                 "id": 1,
@@ -35621,10 +35621,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-tier-i-13-sep-2025-shift-2-paper": {
-        "title": "SSC CGL Tier I 13 Sep 2025 Shift 2 Paper",
+        "title": "Combined Graduate level Examination 2025 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "13.09.2025",
+        "exam_sch_time": "Shift 2",
         "questions": [
             {
                 "id": 1,
@@ -37229,10 +37229,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-tier-i-13-sep-2025-shift-3-paper": {
-        "title": "SSC CGL Tier I 13 Sep 2025 Shift 3 Paper",
+        "title": "Combined Graduate level Examination 2025 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "13.09.2025",
+        "exam_sch_time": "Shift 3",
         "questions": [
             {
                 "id": 1,
@@ -38837,10 +38837,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-tier-i-14-sep-2025-shift-1-paper": {
-        "title": "SSC CGL Tier I 14 Sep 2025 Shift 1 Paper",
+        "title": "Combined Graduate level Examination 2025 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "14.09.2025",
+        "exam_sch_time": "Shift 1",
         "questions": [
             {
                 "id": 1,
@@ -40445,10 +40445,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-9-sep-2024-shift-1-paper": {
-        "title": "SSC CGL 9 Sep 2024 Shift 1 Paper",
+        "title": "Combined Graduate level Examination 2024 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "09.09.2024",
+        "exam_sch_time": "Shift 1",
         "questions": [
             {
                 "id": 1,
@@ -42053,10 +42053,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-9-sep-2024-shift-2-paper": {
-        "title": "SSC CGL 9 Sep 2024 Shift 2 Paper",
+        "title": "Combined Graduate level Examination 2024 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "09.09.2024",
+        "exam_sch_time": "Shift 2",
         "questions": [
             {
                 "id": 1,
@@ -43661,10 +43661,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-10-sep-2024-shift-1-paper": {
-        "title": "SSC CGL 10 Sep 2024 Shift 1 Paper",
+        "title": "Combined Graduate level Examination 2024 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "10.09.2024",
+        "exam_sch_time": "Shift 1",
         "questions": [
             {
                 "id": 1,
@@ -45269,10 +45269,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-10-sep-2024-shift-2-paper": {
-        "title": "SSC CGL 10 Sep 2024 Shift 2 Paper",
+        "title": "Combined Graduate level Examination 2024 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "10.09.2024",
+        "exam_sch_time": "Shift 2",
         "questions": [
             {
                 "id": 1,
@@ -46877,10 +46877,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-11-sep-2024-shift-1-paper": {
-        "title": "SSC CGL 11 Sep 2024 Shift 1 Paper",
+        "title": "Combined Graduate level Examination 2024 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "11.09.2024",
+        "exam_sch_time": "Shift 1",
         "questions": [
             {
                 "id": 1,
@@ -48485,10 +48485,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-11-sep-2024-shift-2-paper": {
-        "title": "SSC CGL 11 Sep 2024 Shift 2 Paper",
+        "title": "Combined Graduate level Examination 2024 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "11.09.2024",
+        "exam_sch_time": "Shift 2",
         "questions": [
             {
                 "id": 1,
@@ -50093,10 +50093,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-12-sep-2024-shift-1-paper": {
-        "title": "SSC CGL 12 Sep 2024 Shift 1 Paper",
+        "title": "Combined Graduate level Examination 2024 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "12.09.2024",
+        "exam_sch_time": "Shift 1",
         "questions": [
             {
                 "id": 1,
@@ -51701,10 +51701,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-19-oct-2014-shift-2-paper": {
-        "title": "SSC CGL 19 Oct 2014 Shift 2 Paper",
+        "title": "Combined Graduate level Examination 2014 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "19.10.2014",
+        "exam_sch_time": "Shift 2",
         "questions": [
             {
                 "id": 1,
@@ -53309,10 +53309,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-26-oct-2014-shift-1-paper": {
-        "title": "SSC CGL 26 Oct 2014 Shift 1 Paper",
+        "title": "Combined Graduate level Examination 2014 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "26.10.2014",
+        "exam_sch_time": "Shift 1",
         "questions": [
             {
                 "id": 1,
@@ -54917,10 +54917,10 @@ const EXAM_DATABASE = {
         ]
     },
     "ssc-cgl-26-oct-2014-shift-2-paper": {
-        "title": "SSC CGL 26 Oct 2014 Shift 2 Paper",
+        "title": "Combined Graduate level Examination 2014 Tier I",
         "exam_level": "Tier-I",
-        "exam_date": "14.07.2023",
-        "exam_sch_time": "900 hrs - 1000 hrs",
+        "exam_date": "26.10.2014",
+        "exam_sch_time": "Shift 2",
         "questions": [
             {
                 "id": 1,
