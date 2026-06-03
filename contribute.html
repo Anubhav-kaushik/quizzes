@@ -198,7 +198,7 @@ details.schema-box .schema-body{padding:0 16px 14px;font-size:12.5px;color:var(-
             <p>Help expand the SSC CGL Mock Test question bank</p>
         </div>
     </div>
-    <a class="header-link" href="index.html" target="_self">
+    <a class="header-link" href="./" target="_self">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
         <span>Back to Simulator</span>
     </a>
@@ -242,12 +242,8 @@ details.schema-box .schema-body{padding:0 16px 14px;font-size:12.5px;color:var(-
                     </div>
                     <div class="field">
                         <label>Exam Level *</label>
-                        <select id="m-level">
-                            <option>Tier-I</option>
-                            <option>Tier-II</option>
-                            <option>Tier-III</option>
-                            <option>Tier-IV</option>
-                        </select>
+                        <select id="m-level"></select>
+                        <div class="hint">Sections are loaded from <code>EXAM_SCHEMA</code> based on this level.</div>
                     </div>
                 </div>
                 <div class="field-row">
@@ -271,12 +267,11 @@ details.schema-box .schema-body{padding:0 16px 14px;font-size:12.5px;color:var(-
                     </button>
                 </div>
 
-                <div class="q-list" id="q-list">
-                    <div class="empty-state" id="empty-q">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                        <h4>No questions added yet</h4>
-                        <p>Click <strong>"Add Question"</strong> above to start building this paper.</p>
-                    </div>
+                <div class="q-list" id="q-list"></div>
+                <div class="empty-state" id="empty-q">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <h4>No questions added yet</h4>
+                    <p>Click <strong>"Add Question"</strong> above to start building this paper.</p>
                 </div>
             </div>
 
@@ -326,12 +321,7 @@ details.schema-box .schema-body{padding:0 16px 14px;font-size:12.5px;color:var(-
                     </div>
                     <div class="field">
                         <label>Exam Level</label>
-                        <select id="l-level">
-                            <option>Tier-I</option>
-                            <option>Tier-II</option>
-                            <option>Tier-III</option>
-                            <option>Tier-IV</option>
-                        </select>
+                        <select id="l-level"></select>
                     </div>
                 </div>
                 <div class="field-row">
@@ -440,6 +430,9 @@ details.schema-box .schema-body{padding:0 16px 14px;font-size:12.5px;color:var(-
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
+<!-- Load data.js so we know which sections exist per exam_level -->
+<script src="data.js"></script>
+
 <!-- FOOTER -->
 <footer class="app-footer">
     <div class="dev-credit">
@@ -451,21 +444,56 @@ details.schema-box .schema-body{padding:0 16px 14px;font-size:12.5px;color:var(-
 
 <script>
 /* ============ CONFIG ============ */
-const GITHUB_REPO = "anubhav-kaushik/quizzes";
-const DEVELOPER_EMAIL = "exampaperwreck@gmail.com";
-const SECTIONS = [
+const GITHUB_REPO = "anubhav-kaushik/quizzes";    // change if repo differs
+const DEVELOPER_EMAIL = "exampaperwreck@gmail.com"; // ← replace with your real email if you want
+
+// Fallback section list — used only if data.js / EXAM_SCHEMA is unavailable
+const FALLBACK_SECTIONS = [
     "General Intelligence and Reasoning",
     "General Awareness",
     "Quantitative Aptitude",
-    "English Language",
-    "Mathematical Abilities",
-    "Reasoning and General Intelligence",
-    "Computer Knowledge"
+    "English Language"
 ];
+const FALLBACK_LEVELS = ["Tier-I", "Tier-II", "Tier-III", "Tier-IV"];
+
 let activeMode = "manual";
 let questions = [];      // manual entry list
 let jsonPayload = null;  // uploaded JSON
 let qIdCounter = 1;
+
+/* ============ LEVEL / SECTION HELPERS (driven by EXAM_SCHEMA) ============ */
+function getAvailableLevels(){
+    if(typeof EXAM_SCHEMA !== "undefined" && EXAM_SCHEMA?.exam_level){
+        return Object.keys(EXAM_SCHEMA.exam_level);
+    }
+    return FALLBACK_LEVELS;
+}
+
+function getSectionsForLevel(level){
+    if(typeof EXAM_SCHEMA !== "undefined" && EXAM_SCHEMA?.exam_level?.[level]?.sections){
+        return Object.keys(EXAM_SCHEMA.exam_level[level].sections);
+    }
+    return FALLBACK_SECTIONS;
+}
+
+function getSectionMeta(level, section){
+    const cfg = (typeof EXAM_SCHEMA !== "undefined")
+        ? EXAM_SCHEMA?.exam_level?.[level]?.sections?.[section]
+        : null;
+    return cfg || null;
+}
+
+/* Populate Manual + Link level dropdowns from EXAM_SCHEMA */
+function populateLevelDropdowns(){
+    const levels = getAvailableLevels();
+    ["m-level", "l-level"].forEach(id => {
+        const sel = document.getElementById(id);
+        if(!sel) return;
+        const prev = sel.value;
+        sel.innerHTML = levels.map(l => `<option value="${l}">${l}</option>`).join("");
+        if(levels.includes(prev)) sel.value = prev;
+    });
+}
 
 /* ============ TABS ============ */
 function switchTab(tab){
@@ -484,13 +512,35 @@ function genSlug(){
     const slug=[base,level,date].filter(Boolean).join("_").replace(/_+/g,"_");
     document.getElementById("m-slug").value=slug||"new_paper";
 }
-["m-title","m-date","m-level"].forEach(id=>document.getElementById(id).addEventListener("input",()=>{genSlug();refreshPreview();}));
+["m-title","m-date"].forEach(id=>document.getElementById(id).addEventListener("input",()=>{genSlug();refreshPreview();}));
+document.getElementById("m-level").addEventListener("change", () => {
+    genSlug();
+    reconcileQuestionSections();   // re-render dropdowns for new level
+});
 
 /* ============ MANUAL QUESTIONS ============ */
+function getCurrentLevel(){
+    return document.getElementById("m-level")?.value || getAvailableLevels()[0];
+}
+
 function addQuestion(){
-    const q={ id: qIdCounter++, section: SECTIONS[0], question:"", options:["","","",""], correct_answer:"" };
+    const sections = getSectionsForLevel(getCurrentLevel());
+    const q={ id: qIdCounter++, section: sections[0], question:"", options:["","","",""], correct_answer:"" };
     questions.push(q);
     renderQuestions();
+}
+
+/* When the exam level changes, fix any sections that no longer apply */
+function reconcileQuestionSections(){
+    const sections = getSectionsForLevel(getCurrentLevel());
+    let changed = false;
+    questions.forEach(q => {
+        if(!sections.includes(q.section)){
+            q.section = sections[0];
+            changed = true;
+        }
+    });
+    if(changed) renderQuestions(); else refreshPreview();
 }
 
 function deleteQuestion(idx){
@@ -518,16 +568,30 @@ function renderQuestions(){
     const empty = document.getElementById("empty-q");
     document.getElementById("m-q-count").textContent = questions.length;
 
-    if(!questions.length){ empty.style.display="block"; list.innerHTML=""; list.appendChild(empty); refreshPreview(); return; }
-    empty.style.display="none";
-    list.innerHTML="";
+    // Always clear the list (empty-state lives outside #q-list now)
+    list.innerHTML = "";
+
+    if(!questions.length){
+        if(empty) empty.style.display = "block";
+        refreshPreview();
+        return;
+    }
+    if(empty) empty.style.display = "none";
+
     const letters=["A","B","C","D","E"];
+
+    const currentLevel = getCurrentLevel();
+    const sections = getSectionsForLevel(currentLevel);
 
     questions.forEach((q, idx) => {
         const item = document.createElement("div");
         item.className = "q-item";
 
-        const sectionOpts = SECTIONS.map(s=>`<option value="${s}" ${q.section===s?'selected':''}>${s}</option>`).join("");
+        const sectionOpts = sections.map(s=>`<option value="${s}" ${q.section===s?'selected':''}>${s}</option>`).join("");
+        const meta = getSectionMeta(currentLevel, q.section);
+        const metaHint = meta
+            ? `<span class="hint">⏱ ${meta.time_allotted} min • +${meta.marking_schema?.correct ?? 0} / ${meta.marking_schema?.incorrect ?? 0}</span>`
+            : `<span class="hint" style="color:var(--warning)">⚠️ No schema match for "${currentLevel}" — sections from fallback list</span>`;
 
         item.innerHTML = `
             <div class="q-item-head">
@@ -540,8 +604,9 @@ function renderQuestions(){
                 </div>
             </div>
             <div class="field" style="margin-bottom:10px">
-                <label>Section</label>
-                <select onchange="questions[${idx}].section=this.value;refreshPreview()">${sectionOpts}</select>
+                <label>Section <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-muted)">— from <code>EXAM_SCHEMA[${currentLevel}]</code></span></label>
+                <select onchange="questions[${idx}].section=this.value;renderQuestions()">${sectionOpts}</select>
+                <div style="margin-top:4px">${metaHint}</div>
             </div>
             <div class="field" style="margin-bottom:10px">
                 <label>Question Text * <span class="hint">(HTML allowed)</span></label>
@@ -809,8 +874,15 @@ function toast(msg, type){
 }
 
 /* ============ INIT ============ */
+populateLevelDropdowns();
+genSlug();
 refreshPreview();
+
+// Notify if data.js wasn't loaded
+if(typeof EXAM_SCHEMA === "undefined"){
+    setTimeout(()=>toast("⚠️ data.js / EXAM_SCHEMA not found — using fallback section list.", "err"), 600);
+}
 </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a05c3289781a4419',t:'MTc4MDQ2MzQ4OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a05daca0ff96473a',t:'MTc4MDQ3ODk3Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
