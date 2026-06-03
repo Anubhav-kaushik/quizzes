@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contribute PYQ — SSC CGL Mock Test Simulator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg-body:#eef2f7; --bg-surface:#ffffff; --bg-elevated:#f8fafc;
+    --text-main:#0b1f3a; --text-muted:#5b6b82;
+    --primary:#1e3a8a; --primary-600:#1d4ed8; --primary-light:#eaf0ff;
+    --accent:#f97316; --accent-light:#fff4ea;
+    --border:#dfe6ef;
+    --success:#16a34a; --success-light:#ecfdf3;
+    --danger:#dc2626; --danger-light:#fef2f2;
+    --warning:#d97706;
+    --review:#7c3aed;
+    --shadow-sm:0 1px 2px rgba(15,23,42,.05);
+    --shadow-md:0 6px 18px -6px rgba(15,23,42,.15);
+    --shadow-lg:0 20px 40px -20px rgba(15,23,42,.25);
+    --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:linear-gradient(180deg,#eef2f7,#e6ecf5);color:var(--text-main);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+
+/* HEADER */
+.app-header{background:linear-gradient(90deg,#0b1f3a 0%,#1e3a8a 60%,#1d4ed8 100%);color:#fff;padding:12px 28px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(11,31,58,.25);gap:12px}
+.brand{display:flex;align-items:center;gap:14px;min-width:0;flex:1}
+.brand-logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#f97316,#fbbf24);display:grid;place-items:center;font-weight:800;color:#0b1f3a;font-size:14px;letter-spacing:-.5px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);flex-shrink:0}
+.app-title h1{font-size:16px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.app-title p{font-size:12px;color:#a8b8d6;margin-top:2px}
+.header-link{color:#fed7aa;font-size:13px;font-weight:600;text-decoration:none;background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.4);padding:8px 14px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+.header-link:hover{background:rgba(249,115,22,.3)}
+.header-link svg{width:14px;height:14px}
+
+/* PAGE */
+.page{max-width:1200px;margin:24px auto;padding:0 20px;display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
+@media (max-width:1024px){.page{grid-template-columns:1fr}}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1e3a8a,#1d4ed8);color:#fff;padding:28px 32px;border-radius:var(--radius);box-shadow:var(--shadow-md);margin-bottom:20px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-50%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(249,115,22,.3),transparent 70%);border-radius:50%}
+.hero h2{font-size:24px;font-weight:800;margin-bottom:6px;letter-spacing:-.02em;position:relative}
+.hero p{color:#c7d4ec;font-size:14px;position:relative;max-width:640px}
+.hero .badge{display:inline-block;background:rgba(249,115,22,.2);border:1px solid rgba(249,115,22,.4);color:#fed7aa;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:600;margin-bottom:12px;letter-spacing:.04em;position:relative;text-transform:uppercase}
+
+/* CARD */
+.card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);margin-bottom:16px;overflow:hidden}
+.card-header{padding:16px 20px;border-bottom:1px solid var(--border);background:var(--bg-elevated);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.card-header h3{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px}
+.card-body{padding:20px}
+
+/* TABS */
+.tabs{display:flex;gap:4px;padding:14px 20px 0;background:var(--bg-surface);border-bottom:1px solid var(--border);overflow-x:auto}
+.tab{padding:10px 16px;border:none;background:transparent;color:var(--text-muted);font-family:inherit;font-size:13.5px;font-weight:600;cursor:pointer;border-bottom:3px solid transparent;border-top-left-radius:8px;border-top-right-radius:8px;display:flex;align-items:center;gap:8px;white-space:nowrap;transition:all .15s}
+.tab:hover{color:var(--primary);background:var(--primary-light)}
+.tab.active{color:var(--primary);border-bottom-color:var(--accent);background:var(--primary-light)}
+.tab svg{width:14px;height:14px}
+.tab-panel{display:none;padding:20px}
+.tab-panel.active{display:block}
+
+/* FORM */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:6px}
+.field .hint{font-size:11.5px;color:var(--text-muted);margin-top:4px;font-weight:400;text-transform:none;letter-spacing:0}
+.field input,.field select,.field textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;background:var(--bg-elevated);color:var(--text-main);transition:all .15s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--primary);background:#fff;box-shadow:0 0 0 3px rgba(30,58,138,.1)}
+.field textarea{resize:vertical;min-height:80px;font-family:inherit;line-height:1.5}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:600px){.field-row{grid-template-columns:1fr}}
+
+/* BUTTONS */
+.btn{background:var(--primary);color:#fff;border:none;padding:10px 18px;font-size:13.5px;font-weight:600;border-radius:8px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;transition:all .15s}
+.btn:hover{background:var(--primary-600);transform:translateY(-1px);box-shadow:0 4px 12px rgba(30,58,138,.25)}
+.btn:active{transform:translateY(0)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn svg{width:14px;height:14px}
+.btn-ghost{background:transparent;color:var(--text-main);border:1.5px solid var(--border)}
+.btn-ghost:hover{background:var(--bg-elevated);border-color:#c7d4ec;color:var(--primary);box-shadow:none}
+.btn-accent{background:var(--accent)}
+.btn-accent:hover{background:#ea580c;box-shadow:0 4px 12px rgba(249,115,22,.3)}
+.btn-success{background:var(--success)}
+.btn-success:hover{background:#15803d;box-shadow:0 4px 12px rgba(22,163,74,.3)}
+.btn-danger{background:var(--danger)}
+.btn-danger:hover{background:#b91c1c;box-shadow:0 4px 12px rgba(220,38,38,.3)}
+.btn-review{background:var(--review)}
+.btn-review:hover{background:#6d28d9;box-shadow:0 4px 12px rgba(124,58,237,.3)}
+.btn-sm{padding:7px 12px;font-size:12px}
+
+/* QUESTION ITEM */
+.q-list{display:flex;flex-direction:column;gap:14px;margin-top:10px}
+.q-item{border:1.5px solid var(--border);border-radius:12px;padding:18px;background:#fff;position:relative;transition:all .15s}
+.q-item:hover{border-color:#c7d4ec}
+.q-item-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px;flex-wrap:wrap}
+.q-item-head .q-num{background:var(--primary);color:#fff;padding:4px 10px;border-radius:6px;font-weight:700;font-size:12px;display:inline-flex;align-items:center;gap:6px}
+.q-item-actions{display:flex;gap:6px}
+.q-item .options-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+@media (max-width:600px){.q-item .options-grid{grid-template-columns:1fr}}
+.q-item .opt-field{display:flex;align-items:center;gap:8px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;padding:8px 12px}
+.q-item .opt-field input[type="radio"]{accent-color:var(--success);flex-shrink:0;width:16px;height:16px}
+.q-item .opt-field input[type="text"]{border:none;background:transparent;outline:none;flex:1;font-family:inherit;font-size:13.5px;padding:4px}
+.q-item .opt-field .opt-letter{width:24px;height:24px;border-radius:6px;background:#fff;border:1px solid var(--border);display:grid;place-items:center;font-weight:700;font-size:11px;color:var(--text-muted);flex-shrink:0}
+.q-item .opt-field.is-correct{background:var(--success-light);border-color:#86efac}
+.q-item .opt-field.is-correct .opt-letter{background:var(--success);color:#fff;border-color:var(--success)}
+
+.empty-state{text-align:center;padding:40px 20px;color:var(--text-muted);border:2px dashed var(--border);border-radius:12px;background:var(--bg-elevated)}
+.empty-state svg{width:48px;height:48px;color:#cbd5e1;margin-bottom:12px}
+.empty-state h4{font-size:15px;font-weight:600;color:var(--text-main);margin-bottom:4px}
+.empty-state p{font-size:13px}
+
+/* DROPZONE */
+.dropzone{border:2.5px dashed var(--border);border-radius:14px;padding:40px 20px;text-align:center;background:var(--bg-elevated);cursor:pointer;transition:all .15s}
+.dropzone:hover,.dropzone.dragover{border-color:var(--primary);background:var(--primary-light)}
+.dropzone svg{width:48px;height:48px;color:var(--primary);margin-bottom:12px}
+.dropzone h4{font-size:15px;font-weight:700;color:var(--text-main);margin-bottom:6px}
+.dropzone p{font-size:13px;color:var(--text-muted)}
+.dropzone strong{color:var(--primary)}
+
+/* CODE PREVIEW */
+.code-preview{background:#0b1f3a;color:#e2e8f0;border-radius:10px;padding:16px 18px;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.6;overflow-x:auto;max-height:400px;overflow-y:auto;white-space:pre-wrap;word-break:break-word}
+.code-preview .k{color:#fbbf24}
+.code-preview .s{color:#86efac}
+.code-preview .n{color:#93c5fd}
+
+/* VALIDATION */
+.validation{margin-top:12px;padding:12px 14px;border-radius:8px;font-size:13px;display:flex;align-items:flex-start;gap:10px}
+.validation.ok{background:var(--success-light);color:#166534;border-left:4px solid var(--success)}
+.validation.err{background:var(--danger-light);color:#991b1b;border-left:4px solid var(--danger)}
+.validation.warn{background:#fff7ed;color:#9a3412;border-left:4px solid var(--warning)}
+.validation svg{width:16px;height:16px;flex-shrink:0;margin-top:2px}
+.validation ul{margin:6px 0 0 18px;font-size:12.5px}
+
+/* SUBMIT SIDEBAR */
+.sticky-side{position:sticky;top:88px}
+@media (max-width:1024px){.sticky-side{position:static}}
+.submit-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-md);overflow:hidden}
+.submit-card-head{background:linear-gradient(135deg,#0b1f3a,#1e3a8a);color:#fff;padding:18px 20px}
+.submit-card-head h3{font-size:15px;font-weight:700;margin-bottom:4px}
+.submit-card-head p{font-size:12px;color:#a8b8d6}
+.submit-card-body{padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.submit-card-body .btn{justify-content:center;width:100%}
+.submit-divider{display:flex;align-items:center;gap:10px;margin:6px 0;color:var(--text-muted);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.submit-divider::before,.submit-divider::after{content:"";flex:1;height:1px;background:var(--border)}
+
+.stats-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px 20px;background:var(--bg-elevated);border-top:1px solid var(--border)}
+.stat-tile{text-align:center;padding:8px}
+.stat-tile .v{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:20px;color:var(--primary)}
+.stat-tile .l{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600;margin-top:2px}
+
+/* TOAST */
+.toast{position:fixed;top:90px;right:20px;background:var(--success);color:#fff;padding:12px 18px;border-radius:10px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow-lg);z-index:1000;opacity:0;transform:translateX(120%);transition:all .3s ease;display:flex;align-items:center;gap:8px;max-width:340px}
+.toast.show{opacity:1;transform:translateX(0)}
+.toast.err{background:var(--danger)}
+.toast.info{background:var(--primary)}
+.toast svg{width:16px;height:16px;flex-shrink:0}
+
+@media (max-width:768px){
+    .app-header{padding:10px 14px}
+    .app-title h1{font-size:14px}
+    .app-title p{font-size:11px}
+    .header-link span{display:none}
+    .page{padding:0 12px;margin:14px auto;gap:14px}
+    .hero{padding:22px;margin-bottom:14px}
+    .hero h2{font-size:20px}
+    .card-body{padding:16px}
+    .tab-panel{padding:16px}
+    .tab{padding:10px 12px;font-size:12.5px}
+    .toast{top:auto;bottom:20px;right:12px;left:12px;max-width:none;transform:translateY(120%)}
+    .toast.show{transform:translateY(0)}
+}
+
+/* APP FOOTER */
+.app-footer{text-align:center;padding:28px 20px 24px;color:var(--text-muted);font-size:12.5px;border-top:1px solid var(--border);background:#fff;margin-top:40px}
+.app-footer .dev-credit{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--primary-light),var(--accent-light));padding:8px 16px;border-radius:999px;color:var(--primary);font-weight:700;margin-bottom:8px;border:1px solid #dbeafe}
+.app-footer .heart{color:var(--danger)}
+
+/* schema details */
+details.schema-box{background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;padding:0;margin-top:14px;overflow:hidden}
+details.schema-box summary{padding:12px 16px;cursor:pointer;font-weight:600;font-size:13px;color:var(--primary);list-style:none;display:flex;align-items:center;gap:8px}
+details.schema-box summary::-webkit-details-marker{display:none}
+details.schema-box summary::before{content:"▶";font-size:10px;transition:transform .15s}
+details[open].schema-box summary::before{transform:rotate(90deg)}
+details.schema-box .schema-body{padding:0 16px 14px;font-size:12.5px;color:var(--text-muted)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="app-header">
+    <div class="brand">
+        <div class="brand-logo">SSC</div>
+        <div class="app-title">
+            <h1>Contribute PYQ</h1>
+            <p>Help expand the SSC CGL Mock Test question bank</p>
+        </div>
+    </div>
+    <a class="header-link" href="index.html" target="_self">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span>Back to Simulator</span>
+    </a>
+</div>
+
+<div class="page">
+
+    <!-- MAIN COLUMN -->
+    <div>
+        <!-- HERO -->
+        <div class="hero">
+            <span class="badge">📥 Contribution Portal</span>
+            <h2>Submit Previous-Year Questions</h2>
+            <p>Pick any of the three methods below — paste a link, upload a JSON file, or build a paper question-by-question. Once you're done, send it to the developer with one click.</p>
+        </div>
+
+        <!-- INPUT METHODS -->
+        <div class="card">
+            <div class="tabs" role="tablist">
+                <button class="tab active" data-tab="manual" onclick="switchTab('manual')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                    Manual Entry
+                </button>
+                <button class="tab" data-tab="json" onclick="switchTab('json')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Upload JSON
+                </button>
+                <button class="tab" data-tab="link" onclick="switchTab('link')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    Share Link
+                </button>
+            </div>
+
+            <!-- MANUAL -->
+            <div class="tab-panel active" id="panel-manual">
+                <h4 style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--primary)">📝 Paper Details</h4>
+                <div class="field-row">
+                    <div class="field">
+                        <label>Paper Title *</label>
+                        <input type="text" id="m-title" placeholder="e.g. Combined Graduate Level Examination 2025 Tier I">
+                    </div>
+                    <div class="field">
+                        <label>Exam Level *</label>
+                        <select id="m-level">
+                            <option>Tier-I</option>
+                            <option>Tier-II</option>
+                            <option>Tier-III</option>
+                            <option>Tier-IV</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label>Exam Date</label>
+                        <input type="text" id="m-date" placeholder="e.g. 12.09.2025">
+                    </div>
+                    <div class="field">
+                        <label>Slug (auto-generated)</label>
+                        <input type="text" id="m-slug" placeholder="cgl_2025_tier1_12_09_2025" readonly style="background:#f1f5f9;color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:12.5px">
+                    </div>
+                </div>
+
+                <hr style="margin:18px 0;border:none;border-top:1px solid var(--border)">
+
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px;flex-wrap:wrap">
+                    <h4 style="font-size:14px;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:8px">❓ Questions <span style="background:var(--primary-light);color:var(--primary);padding:2px 10px;border-radius:999px;font-size:12px" id="m-q-count">0</span></h4>
+                    <button class="btn btn-accent btn-sm" onclick="addQuestion()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Add Question
+                    </button>
+                </div>
+
+                <div class="q-list" id="q-list">
+                    <div class="empty-state" id="empty-q">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        <h4>No questions added yet</h4>
+                        <p>Click <strong>"Add Question"</strong> above to start building this paper.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JSON UPLOAD -->
+            <div class="tab-panel" id="panel-json">
+                <div class="dropzone" id="dropzone" onclick="document.getElementById('json-file').click()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <h4>Drop your JSON file here</h4>
+                    <p>or <strong>click to browse</strong> — accepts <code>.json</code></p>
+                    <input type="file" id="json-file" accept=".json,application/json" style="display:none" onchange="handleJsonFile(this.files[0])">
+                </div>
+                <div id="json-validation"></div>
+
+                <details class="schema-box">
+                    <summary>📐 Expected JSON Schema (click to view)</summary>
+                    <div class="schema-body">
+<pre style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-main);background:#fff;padding:10px;border-radius:6px;margin-top:8px;overflow-x:auto">{
+  "slug": "cgl_2025_tier1_12_09",
+  "title": "Combined Graduate Level Examination 2025 Tier I",
+  "exam_level": "Tier-I",
+  "exam_date": "12.09.2025",
+  "questions": [
+    {
+      "id": 1,
+      "section": "General Intelligence and Reasoning",
+      "question": "Question text here...",
+      "options": ["Option A", "Option B", "Option C", "Option D"],
+      "correct_answer": "Option B"
+    }
+  ]
+}</pre>
+                    </div>
+                </details>
+            </div>
+
+            <!-- LINK -->
+            <div class="tab-panel" id="panel-link">
+                <div class="field">
+                    <label>Source URL *</label>
+                    <input type="url" id="l-url" placeholder="https://drive.google.com/... or https://example.com/paper.pdf">
+                    <div class="hint">Google Drive, PDF, image, blog post, official SSC link — anything that contains the PYQ.</div>
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label>Paper Title *</label>
+                        <input type="text" id="l-title" placeholder="e.g. CGL 2025 Tier I — 12.09.2025">
+                    </div>
+                    <div class="field">
+                        <label>Exam Level</label>
+                        <select id="l-level">
+                            <option>Tier-I</option>
+                            <option>Tier-II</option>
+                            <option>Tier-III</option>
+                            <option>Tier-IV</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label>Exam Date</label>
+                        <input type="text" id="l-date" placeholder="e.g. 12.09.2025">
+                    </div>
+                    <div class="field">
+                        <label>Approx. Question Count</label>
+                        <input type="number" id="l-qcount" placeholder="e.g. 100" min="1">
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Additional Notes</label>
+                    <textarea id="l-notes" placeholder="Any context — answer key included, shift number, source credit, etc."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTRIBUTOR -->
+        <div class="card">
+            <div class="card-header"><h3>👤 Your Details <span style="color:var(--text-muted);font-size:12px;font-weight:400;margin-left:6px">(optional, for credit)</span></h3></div>
+            <div class="card-body">
+                <div class="field-row">
+                    <div class="field">
+                        <label>Your Name</label>
+                        <input type="text" id="c-name" placeholder="e.g. Rahul Verma">
+                    </div>
+                    <div class="field">
+                        <label>Email / GitHub Handle</label>
+                        <input type="text" id="c-contact" placeholder="rahul@example.com or @username">
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Message to Developer</label>
+                    <textarea id="c-msg" placeholder="Any context or feedback you'd like to share..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- PREVIEW -->
+        <div class="card">
+            <div class="card-header">
+                <h3>🔍 JSON Preview</h3>
+                <button class="btn btn-ghost btn-sm" onclick="refreshPreview()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                    Refresh
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="validation-area"></div>
+                <pre class="code-preview" id="json-preview">{ }</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside>
+        <div class="sticky-side">
+            <div class="submit-card">
+                <div class="submit-card-head">
+                    <h3>🚀 Submit Contribution</h3>
+                    <p>Pick any method below — your submission goes straight to the developer.</p>
+                </div>
+                <div class="submit-card-body">
+                    <button class="btn btn-accent" onclick="submitGitHub()">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55 0-.27-.01-1-.02-1.96-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.43-2.69 5.4-5.25 5.69.41.35.77 1.05.77 2.11 0 1.52-.01 2.75-.01 3.12 0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+                        Submit via GitHub Issue
+                    </button>
+                    <button class="btn btn-success" onclick="copyJson()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        Copy JSON to Clipboard
+                    </button>
+                    <button class="btn" onclick="downloadJson()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download JSON
+                    </button>
+                    <div class="submit-divider">or</div>
+                    <button class="btn btn-ghost" onclick="submitEmail()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Email Developer
+                    </button>
+                </div>
+                <div class="stats-mini">
+                    <div class="stat-tile"><div class="v" id="stat-sec">0</div><div class="l">Sections</div></div>
+                    <div class="stat-tile"><div class="v" id="stat-q">0</div><div class="l">Questions</div></div>
+                    <div class="stat-tile"><div class="v" id="stat-bytes">0</div><div class="l">KB</div></div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top:14px">
+                <div class="card-body">
+                    <h4 style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--primary)">💡 Tips for Quality Submissions</h4>
+                    <ul style="font-size:12.5px;color:var(--text-muted);padding-left:18px;display:flex;flex-direction:column;gap:6px;line-height:1.5">
+                        <li>Use proper SSC section names: <em>General Intelligence and Reasoning, General Awareness, Quantitative Aptitude, English Language</em>.</li>
+                        <li>HTML inside question/options is supported (e.g. <code>&lt;sup&gt;2&lt;/sup&gt;</code> for x²).</li>
+                        <li>The <strong>correct answer</strong> must exactly match one of the option strings.</li>
+                        <li>Cross-check with an official answer key whenever possible.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer class="app-footer">
+    <div class="dev-credit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Designed & Developed with <span class="heart">❤</span> by <strong>Anubhav Sharma</strong>
+    </div>
+    <small style="display:block;margin-top:4px;color:#94a3b8">Contribution Portal • SSC CGL Mock Test Simulator</small>
+</footer>
+
+<script>
+/* ============ CONFIG ============ */
+const GITHUB_REPO = "anubhav-kaushik/quizzes";
+const DEVELOPER_EMAIL = "exampaperwreck@gmail.com";
+const SECTIONS = [
+    "General Intelligence and Reasoning",
+    "General Awareness",
+    "Quantitative Aptitude",
+    "English Language",
+    "Mathematical Abilities",
+    "Reasoning and General Intelligence",
+    "Computer Knowledge"
+];
+let activeMode = "manual";
+let questions = [];      // manual entry list
+let jsonPayload = null;  // uploaded JSON
+let qIdCounter = 1;
+
+/* ============ TABS ============ */
+function switchTab(tab){
+    activeMode = tab;
+    document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.tab===tab));
+    document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("active",p.id==="panel-"+tab));
+    refreshPreview();
+}
+
+/* ============ SLUG ============ */
+function genSlug(){
+    const title=document.getElementById("m-title").value.trim();
+    const date=document.getElementById("m-date").value.trim().replace(/[^0-9]/g,"_");
+    const level=document.getElementById("m-level").value.toLowerCase().replace(/-/g,"");
+    const base=title.toLowerCase().replace(/[^a-z0-9]+/g,"_").replace(/^_|_$/g,"").slice(0,40);
+    const slug=[base,level,date].filter(Boolean).join("_").replace(/_+/g,"_");
+    document.getElementById("m-slug").value=slug||"new_paper";
+}
+["m-title","m-date","m-level"].forEach(id=>document.getElementById(id).addEventListener("input",()=>{genSlug();refreshPreview();}));
+
+/* ============ MANUAL QUESTIONS ============ */
+function addQuestion(){
+    const q={ id: qIdCounter++, section: SECTIONS[0], question:"", options:["","","",""], correct_answer:"" };
+    questions.push(q);
+    renderQuestions();
+}
+
+function deleteQuestion(idx){
+    if(!confirm("Delete this question?"))return;
+    questions.splice(idx,1);
+    renderQuestions();
+}
+
+function duplicateQuestion(idx){
+    const cp = JSON.parse(JSON.stringify(questions[idx]));
+    cp.id = qIdCounter++;
+    questions.splice(idx+1,0,cp);
+    renderQuestions();
+}
+
+function moveQuestion(idx, dir){
+    const ni = idx + dir;
+    if(ni<0 || ni>=questions.length) return;
+    [questions[idx], questions[ni]] = [questions[ni], questions[idx]];
+    renderQuestions();
+}
+
+function renderQuestions(){
+    const list = document.getElementById("q-list");
+    const empty = document.getElementById("empty-q");
+    document.getElementById("m-q-count").textContent = questions.length;
+
+    if(!questions.length){ empty.style.display="block"; list.innerHTML=""; list.appendChild(empty); refreshPreview(); return; }
+    empty.style.display="none";
+    list.innerHTML="";
+    const letters=["A","B","C","D","E"];
+
+    questions.forEach((q, idx) => {
+        const item = document.createElement("div");
+        item.className = "q-item";
+
+        const sectionOpts = SECTIONS.map(s=>`<option value="${s}" ${q.section===s?'selected':''}>${s}</option>`).join("");
+
+        item.innerHTML = `
+            <div class="q-item-head">
+                <span class="q-num">Q${idx+1} • ID ${q.id}</span>
+                <div class="q-item-actions">
+                    <button class="btn btn-ghost btn-sm" title="Move up" onclick="moveQuestion(${idx},-1)">↑</button>
+                    <button class="btn btn-ghost btn-sm" title="Move down" onclick="moveQuestion(${idx},1)">↓</button>
+                    <button class="btn btn-ghost btn-sm" title="Duplicate" onclick="duplicateQuestion(${idx})">⎘</button>
+                    <button class="btn btn-danger btn-sm" title="Delete" onclick="deleteQuestion(${idx})">✕</button>
+                </div>
+            </div>
+            <div class="field" style="margin-bottom:10px">
+                <label>Section</label>
+                <select onchange="questions[${idx}].section=this.value;refreshPreview()">${sectionOpts}</select>
+            </div>
+            <div class="field" style="margin-bottom:10px">
+                <label>Question Text * <span class="hint">(HTML allowed)</span></label>
+                <textarea oninput="questions[${idx}].question=this.value;refreshPreview()" placeholder="Type the question...">${escapeHtml(q.question)}</textarea>
+            </div>
+            <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:6px">Options * <span style="font-weight:400;text-transform:none;letter-spacing:0">— click the radio to mark the correct one</span></label>
+            <div class="options-grid">
+                ${q.options.map((opt,oi)=>`
+                    <div class="opt-field ${q.correct_answer && q.correct_answer===opt && opt!==''?'is-correct':''}">
+                        <input type="radio" name="correct-${idx}" ${q.correct_answer===opt && opt!==''?'checked':''} onchange="setCorrect(${idx},${oi})">
+                        <div class="opt-letter">${letters[oi]}</div>
+                        <input type="text" value="${escapeAttr(opt)}" placeholder="Option ${letters[oi]}" oninput="updateOption(${idx},${oi},this.value)">
+                    </div>
+                `).join("")}
+            </div>
+        `;
+        list.appendChild(item);
+    });
+    refreshPreview();
+}
+
+function updateOption(qIdx, oIdx, val){
+    const oldVal = questions[qIdx].options[oIdx];
+    questions[qIdx].options[oIdx] = val;
+    if(questions[qIdx].correct_answer === oldVal) questions[qIdx].correct_answer = val;
+    refreshPreview();
+}
+
+function setCorrect(qIdx, oIdx){
+    questions[qIdx].correct_answer = questions[qIdx].options[oIdx];
+    renderQuestions();
+}
+
+function escapeHtml(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function escapeAttr(s){return (s||"").replace(/&/g,"&amp;").replace(/"/g,"&quot;");}
+
+/* ============ JSON UPLOAD ============ */
+const dz = document.getElementById("dropzone");
+["dragenter","dragover"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add("dragover")}));
+["dragleave","drop"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove("dragover")}));
+dz.addEventListener("drop",e=>{
+    const f=e.dataTransfer.files[0];
+    if(f) handleJsonFile(f);
+});
+
+function handleJsonFile(file){
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        try{
+            const obj = JSON.parse(e.target.result);
+            jsonPayload = obj;
+            showValidation("json-validation", validatePayload(obj), file.name);
+            refreshPreview();
+        }catch(err){
+            jsonPayload = null;
+            document.getElementById("json-validation").innerHTML = `<div class="validation err">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                <div><strong>Invalid JSON:</strong> ${err.message}</div></div>`;
+            refreshPreview();
+        }
+    };
+    reader.readAsText(file);
+}
+
+/* ============ VALIDATION ============ */
+function validatePayload(p){
+    const errors = [], warnings = [];
+    if(!p || typeof p !== "object") errors.push("Root must be an object.");
+    if(!p.title) warnings.push("Missing 'title'.");
+    if(!p.exam_level) warnings.push("Missing 'exam_level'.");
+    if(!p.exam_date) warnings.push("Missing 'exam_date'.");
+    if(!Array.isArray(p.questions)) errors.push("'questions' must be an array.");
+    else {
+        p.questions.forEach((q,i)=>{
+            const pre = `Q${i+1}:`;
+            if(!q.question) errors.push(`${pre} missing question text`);
+            if(!Array.isArray(q.options) || q.options.length<2) errors.push(`${pre} needs at least 2 options`);
+            if(!q.correct_answer) warnings.push(`${pre} no correct answer marked`);
+            else if(Array.isArray(q.options) && !q.options.includes(q.correct_answer)) errors.push(`${pre} correct_answer does not match any option`);
+            if(!q.section) warnings.push(`${pre} missing section`);
+        });
+    }
+    return { errors, warnings };
+}
+
+function showValidation(targetId, v, name){
+    const el = document.getElementById(targetId);
+    if(!el) return;
+    if(v.errors.length){
+        el.innerHTML = `<div class="validation err">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><strong>${v.errors.length} error(s)${name?` in ${name}`:''}:</strong><ul>${v.errors.slice(0,8).map(e=>`<li>${e}</li>`).join("")}${v.errors.length>8?`<li>…and ${v.errors.length-8} more</li>`:''}</ul></div></div>`;
+    } else if(v.warnings.length){
+        el.innerHTML = `<div class="validation warn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <div><strong>Looks valid — ${v.warnings.length} warning(s):</strong><ul>${v.warnings.slice(0,5).map(w=>`<li>${w}</li>`).join("")}${v.warnings.length>5?`<li>…and ${v.warnings.length-5} more</li>`:''}</ul></div></div>`;
+    } else {
+        el.innerHTML = `<div class="validation ok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div><strong>Valid!${name?` "${name}"`:''}</strong> Ready to submit.</div></div>`;
+    }
+}
+
+/* ============ BUILD PAYLOAD ============ */
+function buildPayload(){
+    if(activeMode === "manual"){
+        return {
+            slug: document.getElementById("m-slug").value || "new_paper",
+            title: document.getElementById("m-title").value,
+            exam_level: document.getElementById("m-level").value,
+            exam_date: document.getElementById("m-date").value,
+            questions: questions.map(q => ({
+                id: q.id,
+                section: q.section,
+                question: q.question,
+                options: q.options.filter(o=>o!==undefined),
+                correct_answer: q.correct_answer || ""
+            }))
+        };
+    }
+    if(activeMode === "json"){
+        return jsonPayload || {};
+    }
+    if(activeMode === "link"){
+        return {
+            submission_type: "link",
+            source_url: document.getElementById("l-url").value,
+            title: document.getElementById("l-title").value,
+            exam_level: document.getElementById("l-level").value,
+            exam_date: document.getElementById("l-date").value,
+            question_count: Number(document.getElementById("l-qcount").value)||null,
+            notes: document.getElementById("l-notes").value
+        };
+    }
+    return {};
+}
+
+function buildEnvelope(){
+    return {
+        contributor: {
+            name: document.getElementById("c-name").value || null,
+            contact: document.getElementById("c-contact").value || null,
+            message: document.getElementById("c-msg").value || null
+        },
+        submission_method: activeMode,
+        submitted_at: new Date().toISOString(),
+        payload: buildPayload()
+    };
+}
+
+/* ============ PREVIEW ============ */
+function refreshPreview(){
+    const data = buildEnvelope();
+    const str = JSON.stringify(data, null, 2);
+    const pre = document.getElementById("json-preview");
+    pre.textContent = str;
+
+    // Stats
+    const p = data.payload || {};
+    const qCount = Array.isArray(p.questions) ? p.questions.length : (p.question_count || 0);
+    const sectSet = new Set();
+    if(Array.isArray(p.questions)) p.questions.forEach(q=> q.section && sectSet.add(q.section));
+    document.getElementById("stat-sec").textContent = sectSet.size;
+    document.getElementById("stat-q").textContent = qCount;
+    document.getElementById("stat-bytes").textContent = (new Blob([str]).size / 1024).toFixed(1);
+
+    // Validation
+    if(activeMode === "manual"){
+        showValidation("validation-area", validatePayload(p));
+    } else if(activeMode === "link"){
+        const errs=[], warns=[];
+        if(!p.source_url) errs.push("Source URL is required");
+        if(!p.title) warns.push("Paper title is empty");
+        showValidation("validation-area", { errors:errs, warnings:warns });
+    } else if(activeMode === "json"){
+        document.getElementById("validation-area").innerHTML = "";
+    }
+}
+
+/* ============ SUBMIT ACTIONS ============ */
+function downloadJson(){
+    const data = buildEnvelope();
+    const blob = new Blob([JSON.stringify(data,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const slug = (data.payload && data.payload.slug) || data.payload?.title?.toLowerCase().replace(/[^a-z0-9]+/g,"_") || "pyq_submission";
+    a.href = url;
+    a.download = `${slug}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast("📥 JSON downloaded! You can now email or share the file.", "success");
+}
+
+function copyJson(){
+    const text = JSON.stringify(buildEnvelope(), null, 2);
+    navigator.clipboard.writeText(text).then(
+        ()=>toast("📋 Copied to clipboard! Paste it in a GitHub issue / email.", "success"),
+        ()=>toast("❌ Copy failed. Try the Download button instead.", "err")
+    );
+}
+
+function submitGitHub(){
+    const env = buildEnvelope();
+    const p = env.payload || {};
+    const title = encodeURIComponent(`[PYQ Submission] ${p.title || "New Question Set"} ${p.exam_date?'('+p.exam_date+')':''}`);
+    const jsonBody = JSON.stringify(env, null, 2);
+
+    let body = `## 📥 New PYQ Submission\n\n`;
+    body += `**Method:** \`${env.submission_method}\`\n`;
+    if(env.contributor.name) body += `**Contributor:** ${env.contributor.name}\n`;
+    if(env.contributor.contact) body += `**Contact:** ${env.contributor.contact}\n`;
+    body += `**Submitted:** ${env.submitted_at}\n\n`;
+    if(env.contributor.message) body += `**Message:**\n> ${env.contributor.message.replace(/\n/g,"\n> ")}\n\n`;
+    body += `### 📄 Payload\n\n\`\`\`json\n${jsonBody}\n\`\`\`\n`;
+
+    // GitHub limits URL length — if huge, trim & ask to paste
+    const encodedBody = encodeURIComponent(body);
+    const url = `https://github.com/${GITHUB_REPO}/issues/new?title=${title}&body=${encodedBody}&labels=pyq-submission`;
+
+    if(url.length > 7500){
+        // too large — copy JSON & open a blank issue
+        navigator.clipboard.writeText(body).then(()=>{
+            toast("⚠️ Submission is large. JSON copied — please paste it in the opened GitHub issue.", "info");
+            window.open(`https://github.com/${GITHUB_REPO}/issues/new?title=${title}&labels=pyq-submission`, "_blank");
+        });
+    } else {
+        window.open(url, "_blank");
+        toast("🐙 Opening GitHub issue in a new tab…", "info");
+    }
+}
+
+function submitEmail(){
+    const env = buildEnvelope();
+    const p = env.payload || {};
+    const subject = encodeURIComponent(`[PYQ Submission] ${p.title || "New Question Set"}`);
+    const jsonBody = JSON.stringify(env, null, 2);
+    let body = `Hi Anubhav,\n\nI'd like to contribute the following PYQ data to your SSC CGL Mock Test Simulator.\n\n`;
+    if(env.contributor.name) body += `Name: ${env.contributor.name}\n`;
+    if(env.contributor.contact) body += `Contact: ${env.contributor.contact}\n`;
+    if(env.contributor.message) body += `\nMessage:\n${env.contributor.message}\n`;
+    body += `\n--- JSON Payload ---\n${jsonBody}\n\nThanks!`;
+
+    const url = `mailto:${DEVELOPER_EMAIL}?subject=${subject}&body=${encodeURIComponent(body)}`;
+    if(url.length > 1800){
+        // mailto URLs can't be too long — copy & open blank
+        navigator.clipboard.writeText(body).then(()=>{
+            toast("⚠️ Email body too large for mailto. Content copied — paste it in your email client.", "info");
+            window.location.href = `mailto:${DEVELOPER_EMAIL}?subject=${subject}`;
+        });
+    } else {
+        window.location.href = url;
+    }
+}
+
+/* ============ TOAST ============ */
+let toastTimer;
+function toast(msg, type){
+    const el = document.getElementById("toast");
+    el.className = "toast " + (type || "");
+    el.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>${msg}</span>`;
+    el.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>el.classList.remove("show"), 3500);
+}
+
+/* ============ INIT ============ */
+refreshPreview();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a05c3289781a4419',t:'MTc4MDQ2MzQ4OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
