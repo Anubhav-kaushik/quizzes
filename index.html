@@ -977,6 +977,423 @@
 
         .app-footer small { display: block; margin-top: 4px; color: #94a3b8; }
 
+        /* ============== SOLUTIONS VIEW ============== */
+        #viewSolutions {
+            max-width: 980px;
+            margin: 32px auto;
+            padding: 0 24px;
+        }
+
+        .sol-hero {
+            background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+            color: #fff;
+            padding: 28px 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+        }
+        .sol-hero::before {
+            content: "";
+            position: absolute;
+            top: -50%; right: -10%;
+            width: 280px; height: 280px;
+            background: radial-gradient(circle, rgba(249,115,22,.3), transparent 70%);
+            border-radius: 50%;
+        }
+        .sol-hero h2 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+            position: relative;
+        }
+        .sol-hero p {
+            color: #c7d4ec;
+            font-size: 13.5px;
+            position: relative;
+        }
+        .sol-hero .badge {
+            display: inline-block;
+            background: rgba(249,115,22,.2);
+            border: 1px solid rgba(249,115,22,.4);
+            color: #fed7aa;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            position: relative;
+        }
+        .sol-hero-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .sol-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .sol-stat {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 16px;
+            box-shadow: var(--shadow-sm);
+        }
+        .sol-stat .l {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+        .sol-stat .v {
+            font-size: 22px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            margin-top: 2px;
+        }
+
+        .sol-toc {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .sol-toc .lbl {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            margin-right: 8px;
+        }
+        .sol-toc a {
+            text-decoration: none;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid #dbeafe;
+            transition: all .15s;
+        }
+        .sol-toc a:hover { background: var(--primary); color: #fff; }
+
+        .sol-section {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .sol-section-head {
+            background: linear-gradient(90deg, var(--primary-light), #fff);
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .sol-section-head h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sol-section-head .meta {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .sol-q {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        .sol-q:last-child { border-bottom: none; }
+
+        .sol-q .q-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .sol-q .q-num {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+        .sol-q .q-id {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .sol-q .q-body {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--text-main);
+            margin-bottom: 14px;
+        }
+        .sol-q .q-body img {
+            max-width: 100%; height: auto;
+            display: inline-block; vertical-align: middle;
+            margin: 4px 0; border-radius: 4px;
+        }
+
+        .sol-opts {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        .sol-opt {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 11px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 9px;
+            background: #fff;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .sol-opt .letter {
+            width: 24px; height: 24px;
+            border-radius: 6px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 12px;
+            flex-shrink: 0;
+            border: 1px solid var(--border);
+        }
+        .sol-opt .content {
+            flex: 1;
+            color: var(--text-main);
+        }
+        .sol-opt .content img {
+            max-width: 100%; height: auto;
+            display: inline-block; vertical-align: middle;
+            border-radius: 4px;
+        }
+        .sol-opt.correct {
+            background: var(--success-light);
+            border-color: #86efac;
+            box-shadow: 0 0 0 3px rgba(22,163,74,.08);
+        }
+        .sol-opt.correct .letter {
+            background: var(--success);
+            color: #fff;
+            border-color: var(--success);
+        }
+        .sol-opt.correct .content {
+            color: #166534;
+            font-weight: 600;
+        }
+        .sol-opt .tick {
+            color: var(--success);
+            font-weight: 800;
+            font-size: 16px;
+            flex-shrink: 0;
+            margin-left: auto;
+        }
+        .sol-opt .tick { display: none; }
+        .sol-opt.correct .tick { display: inline-block; }
+
+        .sol-q .ans-box {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: var(--success-light);
+            border-left: 4px solid var(--success);
+            border-radius: 6px;
+            font-size: 13px;
+            color: #166534;
+        }
+        .sol-q .ans-box strong { color: #14532d; }
+
+        .sol-q .no-ans {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: #fff7ed;
+            border-left: 4px solid var(--warning);
+            border-radius: 6px;
+            font-size: 13px;
+            color: #9a3412;
+        }
+
+        /* Toolbar */
+        .sol-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .sol-search {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 13.5px;
+            background: var(--bg-surface);
+            transition: all .15s;
+        }
+        .sol-search:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(30,58,138,.1); }
+
+        @media (max-width: 768px) {
+            #viewSolutions { padding: 0 14px; margin: 16px auto; }
+            .sol-hero { padding: 22px; }
+            .sol-hero h2 { font-size: 20px; }
+            .sol-q { padding: 16px 18px; }
+            .sol-q .q-body { font-size: 14.5px; }
+            .sol-opt { font-size: 13.5px; padding: 10px 12px; }
+        }
+
+        /* === Review-specific styles === */
+        #viewReview { max-width: 980px; margin: 32px auto; padding: 0 24px; }
+
+        .sol-q.status-correct { border-left: 4px solid var(--success); }
+        .sol-q.status-incorrect { border-left: 4px solid var(--danger); }
+        .sol-q.status-skipped { border-left: 4px solid var(--text-muted); }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            flex-shrink: 0;
+        }
+        .status-badge.correct { background: var(--success-light); color: #166534; }
+        .status-badge.incorrect { background: var(--danger-light); color: #991b1b; }
+        .status-badge.skipped { background: #f1f5f9; color: var(--text-muted); }
+
+        /* In review, an option can be (a) chosen by user, (b) correct, (c) both, (d) neither */
+        .sol-opt.user-chosen {
+            background: var(--danger-light);
+            border-color: #fca5a5;
+            box-shadow: 0 0 0 3px rgba(220,38,38,.08);
+        }
+        .sol-opt.user-chosen .letter {
+            background: var(--danger);
+            color: #fff;
+            border-color: var(--danger);
+        }
+        .sol-opt.user-chosen .content { color: #7f1d1d; font-weight: 600; }
+        .sol-opt.user-chosen.correct {
+            background: var(--success-light);
+            border-color: #86efac;
+            box-shadow: 0 0 0 3px rgba(22,163,74,.1);
+        }
+        .sol-opt.user-chosen.correct .letter {
+            background: var(--success);
+            color: #fff;
+            border-color: var(--success);
+        }
+        .sol-opt.user-chosen.correct .content { color: #166534; font-weight: 600; }
+
+        .sol-opt .your-tag {
+            font-size: 10px;
+            background: var(--danger);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-weight: 700;
+            margin-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: none;
+        }
+        .sol-opt.user-chosen .your-tag { display: inline-flex; }
+        .sol-opt.user-chosen.correct .your-tag { background: var(--success); }
+
+        .sol-q .ans-box.your-line {
+            background: #fff7ed;
+            border-left-color: var(--warning);
+            color: #9a3412;
+            margin-top: 8px;
+        }
+        .sol-q .ans-box.your-line.correct {
+            background: var(--success-light);
+            border-left-color: var(--success);
+            color: #166534;
+        }
+        .sol-q .ans-box.your-line.skipped {
+            background: #f1f5f9;
+            border-left-color: var(--text-muted);
+            color: var(--text-muted);
+        }
+
+        .marks-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+        }
+        .marks-pill.pos { color: var(--success); background: var(--success-light); border-color: #86efac; }
+        .marks-pill.neg { color: var(--danger); background: var(--danger-light); border-color: #fca5a5; }
+
+        @media (max-width: 768px) {
+            #viewReview { padding: 0 14px; margin: 16px auto; }
+        }
+
+        @media print {
+            .app-header, .section-tabs, .sol-hero-actions, .sol-toolbar, .palette-fab, .app-footer { display: none !important; }
+            .sol-hero { background: #fff !important; color: #0b1f3a !important; box-shadow: none; border: 1px solid #ccc; }
+            .sol-hero h2, .sol-hero p, .sol-hero .badge { color: #0b1f3a !important; }
+            .sol-section, .sol-stat { box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+            .sol-q { break-inside: avoid; page-break-inside: avoid; }
+            #reviewFilters { display: none !important; }
+        }
+
         /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
@@ -1319,6 +1736,9 @@
             <button class="btn btn-accent" style="width:100%; justify-content:center; padding: 14px;" onclick="initializeWorkspace()">
                 🚀 Start Mock Test
             </button>
+            <button class="btn btn-ghost" style="width:100%; justify-content:center; padding: 12px; margin-top: 10px;" onclick="openSolutionsView()">
+                📖 View Solutions of Selected Paper
+            </button>
         </div>
     </div>
 
@@ -1387,6 +1807,79 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- =================== SOLUTIONS VIEW =================== -->
+    <div id="viewSolutions" style="display: none;">
+        <div class="sol-hero">
+            <div>
+                <span class="badge">📖 Answer Key & Solutions</span>
+                <h2 id="solPaperTitle">Paper Solutions</h2>
+                <p id="solPaperMeta">All questions with the correct answer highlighted in green.</p>
+            </div>
+            <div class="sol-hero-actions">
+                <button class="btn btn-ghost" style="background:rgba(255,255,255,.1); color:#fff; border-color:rgba(255,255,255,.25);" onclick="closeSolutionsView()">
+                    ← Back to Setup
+                </button>
+                <button class="btn btn-accent" onclick="window.print()">
+                    🖨️ Print / Save PDF
+                </button>
+            </div>
+        </div>
+
+        <div class="sol-stats" id="solStats"></div>
+
+        <div class="sol-toolbar">
+            <input type="text" class="sol-search" id="solSearch" placeholder="🔍 Search questions by keyword..." oninput="filterSolutions(this.value)">
+            <button class="btn btn-ghost btn-sm" onclick="document.getElementById('solSearch').value=''; filterSolutions('');" style="padding:8px 14px; font-size:12.5px;">Clear</button>
+        </div>
+
+        <div class="sol-toc" id="solToc"></div>
+
+        <div id="solSectionsContainer"></div>
+    </div>
+
+    <!-- =================== REVIEW ATTEMPT VIEW =================== -->
+    <div id="viewReview" style="display: none;">
+        <div class="sol-hero">
+            <div>
+                <span class="badge">🔍 Attempt Review</span>
+                <h2 id="reviewPaperTitle">Your Attempt with Solutions</h2>
+                <p id="reviewPaperMeta">See what you got right, wrong, and skipped.</p>
+            </div>
+            <div class="sol-hero-actions">
+                <button class="btn btn-ghost" style="background:rgba(255,255,255,.1); color:#fff; border-color:rgba(255,255,255,.25);" onclick="closeReviewView()">
+                    ← Back to Report
+                </button>
+                <button class="btn btn-accent" onclick="window.print()">
+                    🖨️ Print / Save PDF
+                </button>
+            </div>
+        </div>
+
+        <div class="sol-stats" id="reviewStats"></div>
+
+        <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 16px; display:flex; flex-wrap:wrap; gap:14px 18px; align-items:center; font-size:12.5px; color:var(--text-muted);">
+            <strong style="color:var(--text-main); font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em;">Legend:</strong>
+            <span style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:14px; background:var(--success-light); border:1.5px solid #86efac; border-radius:4px;"></span> Correct Answer</span>
+            <span style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:14px; background:var(--danger-light); border:1.5px solid #fca5a5; border-radius:4px;"></span> Your Wrong Choice</span>
+            <span style="display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:14px; height:14px; background:var(--success-light); border:1.5px solid var(--success); border-radius:4px; box-shadow: 0 0 0 2px rgba(22,163,74,.12);"></span> Your Correct Pick</span>
+        </div>
+
+        <div class="sol-toolbar" id="reviewFilters">
+            <input type="text" class="sol-search" id="reviewSearch" placeholder="🔍 Search questions by keyword..." oninput="filterReview()">
+            <select class="sol-search" id="reviewFilter" onchange="filterReview()" style="flex:0 0 200px; min-width:160px;">
+                <option value="all">All Questions</option>
+                <option value="correct">✅ Correct only</option>
+                <option value="incorrect">❌ Incorrect only</option>
+                <option value="skipped">⏭ Skipped only</option>
+            </select>
+            <button class="btn btn-ghost btn-sm" onclick="document.getElementById('reviewSearch').value=''; document.getElementById('reviewFilter').value='all'; filterReview();" style="padding:8px 14px; font-size:12.5px;">Clear</button>
+        </div>
+
+        <div class="sol-toc" id="reviewToc"></div>
+
+        <div id="reviewSectionsContainer"></div>
     </div>
 
     <!-- =================== MOBILE FAB & DRAWER BACKDROP =================== -->
@@ -1462,7 +1955,10 @@
                     <tbody id="dashboardTableRows"></tbody>
                 </table>
             </div>
-            <div style="padding: 20px; border-top: 1px solid var(--border); background: var(--bg-elevated); display:flex; gap:10px; justify-content:flex-end;">
+            <div style="padding: 20px; border-top: 1px solid var(--border); background: var(--bg-elevated); display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap;">
+                <button class="btn btn-review" onclick="openReviewView()">
+                    📖 Review Attempt with Solutions
+                </button>
                 <button class="btn btn-ghost" onclick="window.print()">🖨️ Print Report</button>
                 <button class="btn btn-accent" onclick="window.location.reload()">🔁 Take Another Test</button>
             </div>
@@ -1516,6 +2012,7 @@
         let currentQuestionIndex = 0; // within current section
         // questionStatus[sectionIdx][qIdx] = 'not-visited' | 'not-answered' | 'answered' | 'marked' | 'marked-answered'
         let questionStatus = [];
+        let attemptSnapshot = null;   // { paperTitle, level, examDate, sections: [{name, schema, questions:[{q, chosen, isCorrect, isSkipped, status}]}], totals }
 
         // ============ INIT ============
         window.addEventListener("DOMContentLoaded", () => {
@@ -1687,6 +2184,310 @@
                 });
                 tabs.appendChild(tab);
             });
+        }
+
+        // ============ SOLUTIONS VIEW ============
+        function openSolutionsView() {
+            const slug = document.getElementById("datasetSelector").value;
+            if (!slug || typeof EXAM_DATABASE === "undefined") {
+                alert("Please choose a paper first.");
+                return;
+            }
+            const paper = EXAM_DATABASE[slug];
+            if (!paper) return;
+
+            const level = paper.exam_level || "Tier-I";
+            const levelSchema = (typeof EXAM_SCHEMA !== "undefined" && EXAM_SCHEMA.exam_level[level])
+                ? EXAM_SCHEMA.exam_level[level].sections
+                : {};
+
+            // Group questions by section
+            const grouped = {};
+            (paper.questions || []).forEach(q => {
+                const key = q.section || "General";
+                if (!grouped[key]) grouped[key] = [];
+                grouped[key].push(q);
+            });
+
+            // Header
+            document.getElementById("solPaperTitle").textContent = paper.title || "Paper Solutions";
+            document.getElementById("solPaperMeta").textContent =
+                `${level}${paper.exam_date ? " • " + paper.exam_date : ""} • Auto-compiled answer key`;
+
+            // Stats
+            const totalQ = (paper.questions || []).length;
+            const withAns = (paper.questions || []).filter(q => q.correct_answer && q.correct_answer.toString().trim() !== "").length;
+            const noAns = totalQ - withAns;
+
+            document.getElementById("solStats").innerHTML = `
+                <div class="sol-stat"><div class="l">Total Questions</div><div class="v">${totalQ}</div></div>
+                <div class="sol-stat"><div class="l">Sections</div><div class="v">${Object.keys(grouped).length}</div></div>
+                <div class="sol-stat"><div class="l">With Answer Key</div><div class="v" style="color:var(--success);">${withAns}</div></div>
+                <div class="sol-stat"><div class="l">Without Answer</div><div class="v" style="color:var(--danger);">${noAns}</div></div>
+            `;
+
+            // TOC
+            const toc = document.getElementById("solToc");
+            toc.innerHTML = `<span class="lbl">Jump to:</span>` +
+                Object.keys(grouped).map((name, i) =>
+                    `<a href="#sol-section-${i}">${name} (${grouped[name].length})</a>`
+                ).join("");
+
+            // Render sections
+            const container = document.getElementById("solSectionsContainer");
+            container.innerHTML = "";
+            const letters = ['A', 'B', 'C', 'D', 'E'];
+
+            Object.keys(grouped).forEach((sectionName, sIdx) => {
+                const cfg = levelSchema[sectionName];
+                const metaTxt = cfg
+                    ? `⏱ ${cfg.time_allotted} min • Marking +${cfg.marking_schema?.correct ?? 0} / ${cfg.marking_schema?.incorrect ?? 0}`
+                    : "";
+
+                const sectionDiv = document.createElement("div");
+                sectionDiv.className = "sol-section";
+                sectionDiv.id = `sol-section-${sIdx}`;
+
+                let html = `
+                    <div class="sol-section-head">
+                        <h3>📚 ${sectionName} <span style="background:var(--primary); color:#fff; font-size:11px; padding:2px 10px; border-radius:999px; font-weight:700;">${grouped[sectionName].length}</span></h3>
+                        <span class="meta">${metaTxt}</span>
+                    </div>
+                `;
+
+                grouped[sectionName].forEach((q, qIdx) => {
+                    const correctAns = (q.correct_answer || "").toString().trim();
+                    let correctIdx = -1;
+                    (q.options || []).forEach((opt, oi) => {
+                        if (opt.toString().trim() === correctAns && correctAns !== "") correctIdx = oi;
+                    });
+
+                    const optsHtml = (q.options || []).map((opt, oi) => `
+                        <div class="sol-opt ${oi === correctIdx ? 'correct' : ''}">
+                            <div class="letter">${letters[oi] || (oi + 1)}</div>
+                            <div class="content">${opt}</div>
+                            <span class="tick">✓</span>
+                        </div>
+                    `).join("");
+
+                    const ansBox = correctIdx >= 0
+                        ? `<div class="ans-box">✅ <strong>Correct Answer:</strong> Option ${letters[correctIdx]} — ${stripTags(q.options[correctIdx])}</div>`
+                        : `<div class="no-ans">⚠️ Answer key not available for this question.</div>`;
+
+                    html += `
+                        <div class="sol-q" data-search="${escapeAttrSafe((q.question + ' ' + (q.options || []).join(' ')).toLowerCase())}">
+                            <div class="q-head">
+                                <span class="q-num">Q${qIdx + 1}</span>
+                                <span class="q-id">ID: ${q.id ?? '-'}</span>
+                            </div>
+                            <div class="q-body"><strong>Q${qIdx + 1}.</strong> ${q.question || ''}</div>
+                            <div class="sol-opts">${optsHtml}</div>
+                            ${ansBox}
+                        </div>
+                    `;
+                });
+
+                sectionDiv.innerHTML = html;
+                container.appendChild(sectionDiv);
+            });
+
+            // Switch views
+            document.getElementById("viewSetup").style.display = "none";
+            document.getElementById("viewSolutions").style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function closeSolutionsView() {
+            document.getElementById("viewSolutions").style.display = "none";
+            document.getElementById("viewSetup").style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // ============ REVIEW ATTEMPT VIEW ============
+        function openReviewView() {
+            if (!attemptSnapshot) {
+                alert("Attempt data is not available.");
+                return;
+            }
+
+            const snap = attemptSnapshot;
+            const letters = ['A', 'B', 'C', 'D', 'E'];
+
+            // Header
+            document.getElementById("reviewPaperTitle").textContent = snap.paperTitle;
+            document.getElementById("reviewPaperMeta").textContent =
+                `${snap.level}${snap.examDate ? " • " + snap.examDate : ""} • Detailed answer review`;
+
+            // Stats
+            const totalQ = snap.totals.correct + snap.totals.wrong + snap.totals.skipped;
+            const attempted = snap.totals.correct + snap.totals.wrong;
+            const accuracy = attempted > 0 ? ((snap.totals.correct / attempted) * 100).toFixed(1) : "0.0";
+
+            document.getElementById("reviewStats").innerHTML = `
+                <div class="sol-stat"><div class="l">Net Score</div><div class="v" style="color:var(--accent);">${snap.totals.score.toFixed(2)}</div></div>
+                <div class="sol-stat"><div class="l">Correct</div><div class="v" style="color:var(--success);">${snap.totals.correct}</div></div>
+                <div class="sol-stat"><div class="l">Incorrect</div><div class="v" style="color:var(--danger);">${snap.totals.wrong}</div></div>
+                <div class="sol-stat"><div class="l">Skipped</div><div class="v" style="color:var(--text-muted);">${snap.totals.skipped}</div></div>
+                <div class="sol-stat"><div class="l">Accuracy</div><div class="v">${accuracy}%</div></div>
+            `;
+
+            // TOC
+            const toc = document.getElementById("reviewToc");
+            toc.innerHTML = `<span class="lbl">Jump to:</span>` +
+                snap.sections.map((sec, i) =>
+                    `<a href="#review-section-${i}">${sec.name} (${sec.summary.correct}/${sec.questions.length})</a>`
+                ).join("");
+
+            // Render sections
+            const container = document.getElementById("reviewSectionsContainer");
+            container.innerHTML = "";
+
+            snap.sections.forEach((sec, sIdx) => {
+                const sectionDiv = document.createElement("div");
+                sectionDiv.className = "sol-section";
+                sectionDiv.id = `review-section-${sIdx}`;
+
+                const scoreColor = sec.summary.score >= 0 ? 'var(--success)' : 'var(--danger)';
+                let html = `
+                    <div class="sol-section-head">
+                        <h3>📚 ${sec.name}</h3>
+                        <span class="meta" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                            <span style="color:var(--success); font-weight:700;">✓ ${sec.summary.correct}</span>
+                            <span style="color:var(--danger); font-weight:700;">✕ ${sec.summary.wrong}</span>
+                            <span style="color:var(--text-muted); font-weight:600;">⏭ ${sec.summary.skipped}</span>
+                            <span style="color:${scoreColor}; font-weight:800; font-family:'JetBrains Mono',monospace; background:var(--bg-elevated); padding:3px 10px; border-radius:999px; border:1px solid var(--border);">${sec.summary.score.toFixed(2)}</span>
+                        </span>
+                    </div>
+                `;
+
+                sec.questions.forEach((entry, qIdx) => {
+                    const q = entry.q;
+                    const correctAns = (q.correct_answer || "").toString().trim();
+                    let correctIdx = -1;
+                    (q.options || []).forEach((opt, oi) => {
+                        if (opt.toString().trim() === correctAns && correctAns !== "") correctIdx = oi;
+                    });
+
+                    // Status badge
+                    let statusBadge = "";
+                    let earnedMarks = 0;
+                    if (entry.status === "correct") {
+                        statusBadge = `<span class="status-badge correct">✅ Correct</span>`;
+                        earnedMarks = entry.reward;
+                    } else if (entry.status === "incorrect") {
+                        statusBadge = `<span class="status-badge incorrect">❌ Incorrect</span>`;
+                        earnedMarks = entry.penalty;
+                    } else {
+                        statusBadge = `<span class="status-badge skipped">⏭ Skipped</span>`;
+                        earnedMarks = 0;
+                    }
+                    const markPillClass = earnedMarks > 0 ? "pos" : (earnedMarks < 0 ? "neg" : "");
+                    const marksPill = `<span class="marks-pill ${markPillClass}">${earnedMarks > 0 ? '+' : ''}${earnedMarks}</span>`;
+
+                    // Options with both user-chosen + correct flags
+                    const optsHtml = (q.options || []).map((opt, oi) => {
+                        const isCorrect = oi === correctIdx;
+                        const isChosen = oi === entry.chosenIdx;
+                        const cls = [
+                            "sol-opt",
+                            isCorrect ? "correct" : "",
+                            isChosen ? "user-chosen" : ""
+                        ].filter(Boolean).join(" ");
+                        return `
+                            <div class="${cls}">
+                                <div class="letter">${letters[oi] || (oi + 1)}</div>
+                                <div class="content">${opt}</div>
+                                <span class="your-tag">Your Pick</span>
+                                ${isCorrect ? '<span class="tick">✓</span>' : ''}
+                            </div>
+                        `;
+                    }).join("");
+
+                    // Bottom info boxes
+                    let bottom = "";
+                    if (correctIdx >= 0) {
+                        bottom += `<div class="ans-box">✅ <strong>Correct Answer:</strong> Option ${letters[correctIdx]} — ${stripTags(q.options[correctIdx])}</div>`;
+                    } else {
+                        bottom += `<div class="no-ans">⚠️ Answer key not available for this question.</div>`;
+                    }
+                    if (entry.status === "skipped") {
+                        bottom += `<div class="ans-box your-line skipped">⏭ <strong>Your Response:</strong> Skipped</div>`;
+                    } else if (entry.status === "correct") {
+                        bottom += `<div class="ans-box your-line correct">🎯 <strong>Your Answer:</strong> Option ${letters[entry.chosenIdx]} — ${stripTags(entry.chosenAnswer)}</div>`;
+                    } else {
+                        bottom += `<div class="ans-box your-line">📝 <strong>Your Answer:</strong> Option ${letters[entry.chosenIdx]} — ${stripTags(entry.chosenAnswer)}</div>`;
+                    }
+
+                    html += `
+                        <div class="sol-q status-${entry.status}" data-status="${entry.status}" data-search="${escapeAttrSafe((q.question + ' ' + (q.options || []).join(' ')).toLowerCase())}">
+                            <div class="q-head">
+                                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                                    <span class="q-num">Q${qIdx + 1}</span>
+                                    <span class="q-id">ID: ${q.id ?? '-'}</span>
+                                    ${statusBadge}
+                                    ${marksPill}
+                                </div>
+                            </div>
+                            <div class="q-body"><strong>Q${qIdx + 1}.</strong> ${q.question || ''}</div>
+                            <div class="sol-opts">${optsHtml}</div>
+                            ${bottom}
+                        </div>
+                    `;
+                });
+
+                sectionDiv.innerHTML = html;
+                container.appendChild(sectionDiv);
+            });
+
+            // Switch views
+            document.getElementById("viewDashboard").style.display = "none";
+            document.getElementById("viewReview").style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function closeReviewView() {
+            document.getElementById("viewReview").style.display = "none";
+            document.getElementById("viewDashboard").style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function filterReview() {
+            const term = (document.getElementById("reviewSearch").value || "").trim().toLowerCase();
+            const status = document.getElementById("reviewFilter").value;
+            document.querySelectorAll("#reviewSectionsContainer .sol-q").forEach(c => {
+                const matchesTerm = !term || (c.getAttribute("data-search") || "").includes(term);
+                const matchesStatus = status === "all" || c.getAttribute("data-status") === status;
+                c.style.display = (matchesTerm && matchesStatus) ? "" : "none";
+            });
+            document.querySelectorAll("#reviewSectionsContainer .sol-section").forEach(sec => {
+                const anyVisible = Array.from(sec.querySelectorAll(".sol-q")).some(c => c.style.display !== "none");
+                sec.style.display = anyVisible ? "" : "none";
+            });
+        }
+
+        function filterSolutions(term) {
+            term = (term || "").trim().toLowerCase();
+            const cards = document.querySelectorAll("#solSectionsContainer .sol-q");
+            cards.forEach(c => {
+                if (!term) { c.style.display = ""; return; }
+                const hay = c.getAttribute("data-search") || "";
+                c.style.display = hay.includes(term) ? "" : "none";
+            });
+            // Hide empty sections
+            document.querySelectorAll("#solSectionsContainer .sol-section").forEach(sec => {
+                const anyVisible = Array.from(sec.querySelectorAll(".sol-q")).some(c => c.style.display !== "none");
+                sec.style.display = anyVisible || !term ? "" : "none";
+            });
+        }
+
+        function stripTags(html) {
+            const tmp = document.createElement("div");
+            tmp.innerHTML = html || "";
+            return (tmp.textContent || tmp.innerText || "").trim().slice(0, 120);
+        }
+
+        function escapeAttrSafe(s) {
+            return (s || "").toString().replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         }
 
         // ============ MOBILE PALETTE DRAWER ============
@@ -2094,6 +2895,16 @@
             tbody.innerHTML = "";
 
             const levelSchema = EXAM_SCHEMA.exam_level[currentLevel].sections;
+            const paperData = EXAM_DATABASE[targetPaperSlug] || {};
+
+            // Build attempt snapshot for the review screen
+            attemptSnapshot = {
+                paperTitle: paperData.title || "Mock Test",
+                level: currentLevel,
+                examDate: paperData.exam_date || "",
+                sections: [],
+                totals: { correct: 0, wrong: 0, skipped: 0, score: 0 }
+            };
 
             segmentedSections.forEach(name => {
                 let sCorrect = 0, sWrong = 0, sSkipped = 0;
@@ -2103,20 +2914,39 @@
                 const reward = schemaConfig.marking_schema.correct;
                 const penalty = schemaConfig.marking_schema.incorrect;
 
+                const sectionSnap = { name, schema: schemaConfig, questions: [] };
+
                 questionsList.forEach(q => {
                     const selectedInput = document.querySelector(`input[name="radio-node-${q.id}"]:checked`);
+                    let chosenAnswer = null, chosenIdx = -1, status = "skipped", isCorrect = false;
+
                     if (!selectedInput) {
                         sSkipped++;
                     } else {
-                        // The chosen <span class="option-content"> is now after the .option-letter
                         const chosenWrapper = selectedInput.parentElement;
                         const chosenContentElement = chosenWrapper.querySelector('.option-content');
-                        if (q.correct_answer !== "" && chosenContentElement && chosenContentElement.innerHTML.trim() === q.correct_answer.trim()) {
+                        chosenAnswer = chosenContentElement ? chosenContentElement.innerHTML.trim() : null;
+                        chosenIdx = Number(selectedInput.value);
+
+                        if (q.correct_answer !== "" && chosenAnswer === q.correct_answer.trim()) {
                             sCorrect++;
+                            status = "correct";
+                            isCorrect = true;
                         } else {
                             sWrong++;
+                            status = "incorrect";
                         }
                     }
+
+                    sectionSnap.questions.push({
+                        q,
+                        chosenAnswer,
+                        chosenIdx,
+                        status,
+                        isCorrect,
+                        reward,
+                        penalty
+                    });
                 });
 
                 let sectionalScore = (sCorrect * reward) + (sWrong * penalty);
@@ -2125,6 +2955,9 @@
                 netWrong += sWrong;
                 netSkipped += sSkipped;
                 netAggregatedScore += sectionalScore;
+
+                sectionSnap.summary = { correct: sCorrect, wrong: sWrong, skipped: sSkipped, score: sectionalScore };
+                attemptSnapshot.sections.push(sectionSnap);
 
                 const tr = document.createElement("tr");
                 tr.innerHTML = `
@@ -2136,6 +2969,8 @@
                 `;
                 tbody.appendChild(tr);
             });
+
+            attemptSnapshot.totals = { correct: netCorrect, wrong: netWrong, skipped: netSkipped, score: netAggregatedScore };
 
             const attempted = netCorrect + netWrong;
             const accuracy = attempted > 0 ? ((netCorrect / attempted) * 100).toFixed(1) : "0.0";
@@ -2161,7 +2996,7 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a05c38cfa8204230',t:'MTc4MDQ2Mzc0Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0668ca10d874811',t:'MTc4MDU3MjAzNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 
 </html>
