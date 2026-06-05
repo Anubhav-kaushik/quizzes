@@ -94,6 +94,218 @@ const EXAM_SCHEMA = {
 };
 
 const EXAM_DATABASE = {
+    "master_cheatsheet_tieri_01_06_2026": {
+        "title": "Master Cheatsheet",
+        "exam_level": "Tier-I",
+        "exam_date": "01.06.2026",
+        "exam_sch_time": "",
+        "questions": [
+        {
+            "id": 1,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>📈 SI &amp; CI <span class=cnt>6 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>SI Difference</strong><br>\n                    Diff = P·t·|R₁−R₂|/100 → R₁−R₂ = (Diff×100)/(P·t)\n                    <div class=ex><strong>Q:</strong> ₹8000, 3yr, Diff=₹800 → (800×100)/(8000×3)=3.33%</div>\n                </div>\n\n                <div class=fb><strong>CI Half-Yearly</strong><br>Amount = P(1+R/200)²ᵗ<br>Rate↗half, Time↗double\n                    <div class=ex><strong>Q:</strong> ₹8000, 20% p.a., 1yr → 8000(1.1)²=₹9680 → CI=₹1680</div>\n                </div>\n\n                <div class=fb><strong>CI Half-Yearly (2yr)</strong><br>Amount = P(1+R/200)⁴\n                    <div class=ex><strong>Q:</strong> ₹6500, 10%, 2yr → 5% per half, 4 periods → ≈₹7900</div>\n                </div>\n\n                <div class=fb><strong>Sum Triples (SI)</strong><br>SI=200% of P in t yr → R=200/t\n                    <div class=ex><strong>Q:</strong> Triples in 9yr → R=200/9=22.22%</div>\n                </div>\n\n                <div class=fb><strong>Equal Instalments (CI)</strong><br>P = x/(1+r) + x/(1+r)² + ...\n                    <div class=ex><strong>Q:</strong> ₹1500, 40%, 2 instal → 1500=x/1.4+x/1.96 → x=₹1225</div>\n                </div>\n\n                <svg viewBox=\"0 0 200 60\" height=55><text x=2 y=16 font-size=9 fill=#333 font-weight=bold>SI vs CI\n                        Visual</text>\n                    <rect x=5 y=22 w=30 h=22 fill=#3498db rx=2 /><text x=7 y=38 font-size=7 fill=#fff>P</text>\n                    <rect x=38 y=26 w=25 h=18 fill=#e74c3c rx=2 /><text x=40 y=39 font-size=7 fill=#fff>SI</text>\n                    <rect x=66 y=18 w=25 h=26 fill=#2ecc71 rx=2 /><text x=68 y=35 font-size=7 fill=#fff>CI</text><text\n                        x=94 y=28 font-size=7 fill=#555>CI ≥ SI</text><text x=94 y=40 font-size=7 fill=#555>(half-yr CI\n                        > annual)</text>\n                </svg>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 2,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>⚖️ Ratio · Partnership <span class=cnt>6 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>Profit ∝ Investment × Time</strong><br>To find <u>Time ratio</u>:\n                    Profit/Investment<br>To find <u>Investment ratio</u>: Profit/Time\n                    <div class=ex><strong>Q:</strong> Capital 3:4:8, Profit 2:3:5 → Time = 2/3:3/4:5/8 → ×24 → 16:18:15\n                    </div>\n                    <div class=ex><strong>Q:</strong> Time 3:2:7, Profit 4:3:14 → Invest=4/3:3/2:2 → ×6 → 8:9:12</div>\n                </div>\n\n                <div class=fb><strong>Income–Expenditure = Savings</strong><br>If both save same ₹, equate using\n                    multipliers.\n                    <div class=ex><strong>Q:</strong> Income 7:4, Expend 3:1, Save ₹4800 each → 7x-3y=4x-y=4800 →\n                        Incomes sum=₹21120</div>\n                </div>\n\n                <div class=fb><strong>% more than 3rd number → Ratio</strong><br>Let 3rd=100. 1st=110, 2nd=125 → 110:125\n                    = 22:25</div>\n\n                <div class=fb><strong>Coin Problems</strong><br>Count×Value per type, sum in rupees.\n                    <div class=ex><strong>Q:</strong> 25p:50p:₹2:₹5 = 5:4:3:1, Total ₹285 → (125+200+600+500)x paise =\n                        1425x = 28500p → x=20. Diff 25p &amp; ₹5 = 5x−x=80</div>\n                </div>\n\n                <svg viewBox=\"0 0 240 50\" height=42><text x=2 y=12 font-size=8 fill=#555>Partnership: A·T =\n                        Profit</text>\n                    <circle cx=35 cy=32 r=14 fill=none stroke=#c0392b stroke-width=\"2\" /><text x=35 y=36\n                        text-anchor=middle font-size=7 fill=#333>I₁T₁</text><text x=52 y=36 font-size=9\n                        fill=#333>:</text>\n                    <circle cx=70 cy=32 r=14 fill=none stroke=#2980b9 stroke-w=2 /><text x=70 y=36 text-anchor=middle\n                        font-size=7 fill=#333>I₂T₂</text><text x=87 y=36 font-size=9 fill=#333>:</text>\n                    <circle cx=105 cy=32 r=14 fill=none stroke=#27ae60 stroke-w=2 /><text x=105 y=36 text-anchor=middle\n                        font-size=7 fill=#333>I₃T₃</text><text x=125 y=28 font-size=8 fill=#555>=</text><text x=138 y=28\n                        font-size=8 fill=#c0392b>P₁</text><text x=155 y=28 font-size=8 fill=#555>:</text><text x=163\n                        y=28 font-size=8 fill=#2980b9>P₂</text><text x=180 y=28 font-size=8 fill=#555>:</text><text\n                        x=188 y=28 font-size=8 fill=#27ae60>P₃</text>\n                </svg>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 3,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>💰 Profit/Loss · Discount <span class=cnt>6 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>Successive Discount → Single</strong><br>d = a + b − ab/100<br>10%+10% = 20−1 =\n                    19%</div>\n\n                <div class=fb><strong>MP → SP → MP</strong><br>SP = MP × (100−d)/100<br>MP = SP × 100/(100−d)\n                    <div class=ex><strong>Q:</strong> SP=₹87500, d=44% → MP=87500×100/56=₹156250</div>\n                </div>\n\n                <div class=fb><strong>Overall Profit (2 transactions)</strong><br>Total CP, Total SP → Profit% =\n                    (SP−CP)×100/CP\n                    <div class=ex><strong>Q:</strong> 5000→6000, 8000→10000 → CP=13000, SP=16000 → Profit=23.08%</div>\n                </div>\n\n                <div class=fb><strong>Dishonest Dealer</strong><br>Assume CP=100. MP=150 (50%↑). SP=120 (20%↓).<br>Gives\n                    900gm → Eff SP/kg = 120×1000/900=133.33 → Profit=33%</div>\n\n                <div class=fb><strong>Rotten % / Savings %</strong><br>Good = Total×(100−r)/100<br>Expenditure =\n                    Salary×(100−s)/100\n                    <div class=ex><strong>Q:</strong> 350 eggs, 12% rotten → 350×0.88=308<br>₹42000 salary, saves 30% →\n                        42000×0.7=₹29400</div>\n                </div>\n\n                <svg viewBox=\"0 0 220 50\" height=42><text x=2 y=12 font-size=8 fill=#555>Discount Chain</text>\n                    <rect x=5 y=18 w=42 h=20 rx=3 fill=#e74c3c /><text x=26 y=32 text-anchor=middle font-size=8\n                        fill=#fff>MP</text>\n                    <line x1=47 y1=28 x2=58 y2=28 stroke=#999 stroke-width=1.5 marker-end=url(#a) /><text x=52 y=18\n                        font-size=7 fill=#999>-d%</text>\n                    <rect x=62 y=18 w=42 h=20 rx=3 fill=#3498db /><text x=83 y=32 text-anchor=middle font-size=8\n                        fill=#fff>SP</text>\n                    <line x1=104 y1=28 x2=115 y2=28 stroke=#999 stroke-width=1.5 /><text x=109 y=18 font-size=7\n                        fill=#999>-d₂%</text>\n                    <rect x=118 y=18 w=42 h=20 rx=3 fill=#2ecc71 /><text x=139 y=32 text-anchor=middle font-size=7\n                        fill=#fff>Final SP</text>\n                    <defs>\n                        <marker id=a viewBox=\"0 0 10 10\" refX=5 refY=5 markerWidth=6 markerHeight=6 orient=auto>\n                            <path d=\"M0,0L10,5L0,10Z\" fill=#999 />\n                        </marker>\n                    </defs>\n                </svg>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 4,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>📊 Stats: Avg·Median·Mode <span class=cnt>6 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>Avg = Sum/n</strong><br>New Avg = (OldAvg×n + NewVal)/(n+1)\n                    <div class=ex><strong>Q:</strong> Cubes 1,8,27,64,125 → Avg=225/5=45<br><strong>Q:</strong> 4 papers\n                        avg=51, 5th=56 → (204+56)/5=52</div>\n                </div>\n\n                <div class=fb><strong>Mode</strong> = Most frequent value<br><strong>Median</strong> = Middle of sorted\n                    data\n                    <div class=ex><strong>Q:</strong> 5,7,9,7,3,7,5,7,8,6,7 → Mode=7<br><strong>Q:</strong> Changing\n                        largest k values → Median unchanged</div>\n                </div>\n\n                <div class=fb><strong>Empirical: Mode = 3M − 2X</strong><br>M=Median, X=Mean\n                    <div class=ex><strong>Q:</strong> Mean=60, Median=48 → Mode = 144−120=24</div>\n                </div>\n\n                <div class=fb><strong>Weighted Avg / Avg Speed</strong><br>Avg Speed = Total Distance / Total\n                    Time<br><em>NOT arithmetic mean of speeds!</em>\n                    <div class=ex><strong>Q:</strong> 45km@15(3h)+80@40(2h)+6@2(3h) → 131km/8h=16.38 km/h</div>\n                </div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 5,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>📐 Geometry <span class=cnt>9 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>Collinearity → 0 Circles</strong><br>If AB+BC=AC → points collinear → no circle\n                    passes.\n                    <div class=ex><strong>Q:</strong> AB=9, BC=11, AC=20 → 9+11=20 → 0 circles</div>\n                </div>\n\n                <div class=fb><strong>Cyclic Quadrilateral</strong><br>∠P+∠R=180°, ∠Q+∠S=180°\n                    <div class=ex><strong>Q:</strong> ∠P=3∠R → ∠R=45°,∠P=135°<br>∠S=4∠Q → ∠Q=36°,∠S=144° → Sum=189°\n                    </div>\n                </div>\n\n                <div class=fb><strong>Tangential Quadrilateral</strong><br>AB + CD = BC + AD\n                    <div class=ex><strong>Q:</strong> AB=18, BC=21, AD=15 → 18+CD=36 → CD=18cm</div>\n                </div>\n\n                <div class=fb><strong>Polygon</strong><br>Sum θ = (n−2)×180°<br>Diagonals = n(n−3)/2\n                    <div class=ex><strong>Q:</strong> Sum=2700° → n=17 → Diags=17×14/2=119</div>\n                </div>\n\n                <svg viewBox=\"0 0 230 95\" height=82><text x=2 y=10 font-size=8 fill=#555>Quadrilateral with\n                        incircle</text>\n                    <polygon points=\"60,70 140,80 180,40 40,30\" fill=none stroke=#333 stroke-w=1.5 />\n                    <circle cx=105 cy=55 r=18 fill=none stroke=#c0392b stroke-w=1 stroke-dasharray=3 />\n                    <text x=48 y=26 font-size=7 fill=#c0392b>A</text><text x=138 y=82 font-size=7\n                        fill=#c0392b>B</text><text x=182 y=39 font-size=7 fill=#c0392b>C</text><text x=33 y=68\n                        font-size=7 fill=#c0392b>D</text>\n                    <text x=78 y=78 font-size=7 fill=#333>AB+CD=BC+AD</text>\n                </svg>\n\n                <div class=fb><strong>Equilateral ∆ Centroid</strong><br>Median = √3/2 × side<br>Vertex→Centroid =\n                    (2/3)median = side/√3\n                    <div class=ex><strong>Q:</strong> PQ=6cm → PL=6/√3=2√3 cm</div>\n                </div>\n\n                <div class=fb><strong>Square in Circle</strong><br>Diagonal=2R, Side=R√2, Perimeter=4R√2\n                    <div class=ex><strong>Q:</strong> R=5cm → Perimeter=20√2 cm</div>\n                </div>\n\n                <div class=fb><strong>30-60-90 ∆</strong><br>BC = AB·tan60° = 12√3</div>\n\n                <svg viewBox=\"0 0 150 80\" height=65><text x=2 y=10 font-size=8 fill=#555>Centroid (2:1)</text>\n                    <polygon points=\"75,10 10,70 140,70\" fill=none stroke=#333 stroke-w=1.2 />\n                    <line x1=75 y1=10 x2=75 y2=70 stroke=#e74c3c stroke-w=1 stroke-dasharray=3 />\n                    <circle cx=75 cy=50 r=2 fill=#c0392b /><text x=78 y=48 font-size=7 fill=#c0392b>G</text>\n                    <text x=10 y=30 font-size=7 fill=#333>2:1</text>\n                    <line x1=55 y1=42 x2=68 y2=48 stroke=#999 stroke-w=.8 />\n                    <text x=75 y=8 text-anchor=middle font-size=7>A</text><text x=5 y=72 font-size=7>B</text><text x=140\n                        y=72 text-anchor=end font-size=7>C</text>\n                    <text x=8 y=60 font-size=8 fill=#c0392b>AG:GL=2:1</text>\n                </svg>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 6,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>📏 Mensuration <span class=cnt>6 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>Park with inner path</strong><br>Inner L = L−2w, Inner B = B−2w<br>Paint cost =\n                    Perimeter(inner)×rate\n                    <div class=ex><strong>Q:</strong> 120×104, 1m path → Inner=118×102 → P=440 → Cost=440×2.5=₹1100\n                    </div>\n                </div>\n\n                <svg viewBox=\"0 0 130 85\" height=70><text x=2 y=10 font-size=7 fill=#555>Park path (top view)</text>\n                    <rect x=10 y=15 w=110 h=60 fill=none stroke=#333 stroke-w=1.2 />\n                    <rect x=20 y=22 w=90 h=48 fill=#e8f0fe stroke=#c0392b stroke-w=1 stroke-dasharray=3 />\n                    <text x=60 y=60 text-anchor=middle font-size=6 fill=#c0392b>Path (1m)</text>\n                    <text x=38 y=17 font-size=6 fill=#333>120</text><text x=6 y=50 font-size=6 fill=#333>104</text>\n                </svg>\n\n                <div class=fb><strong>Sphere SA</strong><br>SA ∝ r². If r↓d% → New SA = (1−d/100)²<br>%↓ =\n                    [1−(1−d/100)²]×100\n                    <div class=ex><strong>Q:</strong> r↓48% → (0.52)²=0.2704 → ↓72.96%</div>\n                </div>\n\n                <div class=fb><strong>Cylinder</strong><br>CSA=2πrh, V=πr²h\n                    <div class=ex><strong>Q:</strong> CSA=126π, h=14 → r=4.5 → V=π(4.5)²×14</div>\n                </div>\n\n                <div class=fb><strong>Trapezium</strong><br>A=½(a+b)h. Given diff d: a+b=2A/h, a−b=d\n                    <div class=ex><strong>Q:</strong> Diff=12, h=60, A=1380 → a+b=46, a−b=12 → a=29,b=17</div>\n                </div>\n\n                <div class=fb><strong>Prism : Pyramid</strong><br>Same base &amp; height → V ratio = 3:1</div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 7,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>🚄 Time·Speed·Distance <span class=cnt>4 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>Boats &amp; Streams</strong><br>Down = u+v, Up = u−v<br>Total T = d/(u+v) +\n                    d/(u−v)\n                    <div class=ex><strong>Q:</strong> u=10, v=4.5, T=2h → d(1/14.5+1/5.5)=2 → d≈7.98km</div>\n                </div>\n\n                <div class=fb><strong>Train + Tunnel</strong><br>Dist = Train_L + Tunnel_L<br>Speed(m/s)×18/5 = km/h\n                    <div class=ex><strong>Q:</strong> 350+1250=1600m in 80s → speed=20m/s=72km/h</div>\n                </div>\n\n                <svg viewBox=\"0 0 200 45\" height=38><text x=2 y=10 font-size=7 fill=#555>Train in tunnel</text>\n                    <rect x=5 y=14 w=50 h=18 fill=#e74c3c rx=2 /><text x=30 y=27 text-anchor=middle font-size=6\n                        fill=#fff>Train</text>\n                    <rect x=50 y=14 w=100 h=18 fill=none stroke=#333 stroke-w=1 /><text x=100 y=27 text-anchor=middle\n                        font-size=6>Tunnel</text>\n                    <text x=62 y=12 font-size=6 fill=#c0392b>← L_Train →</text>\n                    <text x=90 y=36 font-size=6 fill=#333>← L_Tunnel →</text>\n                </svg>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 8,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>🔧 Time &amp; Work · Pipes <span class=cnt>5 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>Efficiency Ratio → Time</strong><br>A=k×B. Together T days → B alone = T×(k+1)\n                    <div class=ex><strong>Q:</strong> A=4×B, together 48d → B=48×5=240d</div>\n                </div>\n\n                <div class=fb><strong>M₁H₁D₁ = M₂H₂D₂</strong>\n                    <div class=ex><strong>Q:</strong> 6 men × 10h = 12 men × xh → x=5h</div>\n                </div>\n\n                <div class=fb><strong>Alternate Day Work</strong><br>Compute 2-day cycle, repeat till completion.</div>\n\n                <div class=fb><strong>Pipes (flow ∝ d²)</strong><br>Rate ratio = d₁²:d₂²:d₃²<br>Combined = sum rates\n                    <div class=ex><strong>Q:</strong> d=2,3,4. Flow=4:9:16. Largest fills in 81min → Combined =\n                        (4+9+16)/81 = 29/81 → T=81/29 min</div>\n                </div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 9,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>➗ Algebra · Equations <span class=cnt>7 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>(2x+y)² = 4x²+y²+4xy</strong>\n                    <div class=ex><strong>Q:</strong> 4x²+y²=40, xy=6 → (2x+y)²=64 → 2x+y=±8</div>\n                </div>\n\n                <div class=fb><strong>Infinite Solutions</strong><br>a₁/a₂ = b₁/b₂ = c₁/c₂\n                    <div class=ex><strong>Q:</strong> 17x+my+102=0 &amp; 23x+299y+138=0 → m=221</div>\n                </div>\n\n                <div class=fb><strong>No Solution</strong><br>a₁/a₂ = b₁/b₂ ≠ c₁/c₂\n                    <div class=ex><strong>Q:</strong> 18x−72y+13=0 &amp; 7x−my−17=0 → m=28</div>\n                </div>\n\n                <div class=fb><strong>Elimination Method</strong><br>2L+M=31000, L+2M=35000 → 3M=39000 → M=₹13000</div>\n\n                <div class=fb><strong>Age Ratios</strong><br>Use past &amp; future equations, solve linear pair.</div>\n\n                <div class=fb><strong>% Equation</strong><br>20%(A+B) = 30%(A−B) → A=5B → A=500% of B</div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 10,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>🔢 Number System <span class=cnt>6 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>Divisibility</strong><br>4 → last 2 digits ÷ 4<br>8 → last 3 digits ÷ 8<br>11 →\n                    (odd−even) sum ÷ 11<br>7 → double last, subtract, repeat\n                    <div class=ex><strong>Q:</strong> 5769116 → last 2 \"16\" → ÷4 ✓<br><strong>Q:</strong> 1254216 → last\n                        3 \"216\" → ÷8=27 ✓<br><strong>Q:</strong> 5214341 → (5+1+3+1)−(2+4+4)=0 → ÷11 ✓</div>\n                </div>\n\n                <div class=fb><strong>HCF × LCM = Product</strong><br>HCF=h, nums=ha,hb (co-prime) → h²ab=Prod\n                    <div class=ex><strong>Q:</strong> Prod=1500, h=10 → ab=15 → (1,15),(3,5) → 2 pairs</div>\n                </div>\n\n                <div class=fb><strong>Same Remainder r</strong><br>Num = LCM(a,b,c)×k + r<br>Largest n-digit: LCM\n                    multiple + r\n                    <div class=ex><strong>Q:</strong> r=2 when ÷3,5,9 → LCM=45 → largest ≤997: 990 → 992</div>\n                </div>\n\n                <div class=fb><strong>463y divisible by 7 → y=4</strong></div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 11,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>🎲 Probability <span class=cnt>3 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>P = Favorable/Total</strong>\n                    <div class=ex><strong>Q:</strong> 6W+8B+4R+3Bl=21 → P(Black ∪ Blue)=(8+3)/21=11/21</div>\n                </div>\n\n                <div class=fb><strong>Binomial</strong><br>P(k) = ⁿCₖ·pᵏ·(1−p)ⁿ⁻ᵏ\n                    <div class=ex><strong>Q:</strong> p=5/8, n=10, k=2 → ¹⁰C₂·(5/8)²·(3/8)⁸</div>\n                </div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 12,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>🧪 Mixture · Alligation <span class=cnt>3 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>Alligation Cross</strong><br>CP_mix = SP·100/(100+P%)<br>Cheaper:Dearer =\n                    (D−M):(M−C)\n                    <svg viewBox=\"0 0 200 55\" height=48><text x=2 y=10 font-size=8 fill=#c0392b>Alligation Cross\n                            Method</text>\n                        <text x=80 y=22 text-anchor=middle font-size=9 font-weight=bold>Mean (M)</text>\n                        <line x1=25 y1=28 x2=80 y2=22 stroke=#333 stroke-w=1 />\n                        <line x1=135 y1=28 x2=80 y2=22 stroke=#333 stroke-w=1 />\n                        <text x=15 y=42 font-size=8 fill=#e74c3c>C (Cheaper)</text>\n                        <text x=145 y=42 font-size=8 fill=#2980b9>D (Dearer)</text>\n                        <text x=45 y=32 font-size=7 fill=#27ae60>(D−M)</text>\n                        <text x=110 y=32 font-size=7 fill=#27ae60>(M−C)</text>\n                        <text x=80 y=50 text-anchor=middle font-size=7 fill=#555>Ratio = (D−M) : (M−C)</text>\n                    </svg>\n                    <div class=ex><strong>Q:</strong> SP=56, Profit=12% → CP=50. Mix ₹60(Rs) &amp; ₹42(Ch) → Ratio =\n                        8:10 = 4:5. 24kg of ₹42 → ₹60 kg = 24×4/5 = 19.2 kg</div>\n                </div>\n\n                <div class=fb><strong>Replacement Formula</strong><br>Final = Initial × (1−V/T)ⁿ\n                    <div class=ex><strong>Q:</strong> 40L milk, 4L removed 3× → 40×(0.9)³ = 29.16L</div>\n                </div>\n\n                <div class=fb><strong>Add milk to increase %</strong><br>(Milk+x)/(Total+x) = New%/100\n                    <div class=ex><strong>Q:</strong> 80L @60% milk=48L. Need 80% → (48+x)/(80+x)=0.8 → x=80L</div>\n                </div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 13,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>🧮 Simplification (BODMAS) <span class=cnt>4 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>Innermost bracket first</strong><br>30−[40−{56−(25−13−12)}] = 46</div>\n                <div class=fb><strong>3−(−6){−2−9−3}÷7{1+(−2)(−1)} = −1</strong></div>\n                <div class=fb><strong>Expression→value=7</strong> (image Q, answer 7)</div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 14,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>📐 Trigonometry <span class=cnt>4 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>sinA·sinB − cosA·cosB = −cos(A+B)</strong><br>sin25·sin65 − cos25·cos65 = −cos90=0\n                </div>\n                <div class=fb><strong>cos120° = −cos60° = −½</strong></div>\n\n                <div class=fb><strong>Heights &amp; Distances</strong><br>tanθ₁=(H−h)/d, tanθ₂=H/d → solve\n                    <svg viewBox=\"0 0 200 80\" height=65><text x=2 y=10 font-size=7 fill=#555>Tower + Building</text>\n                        <rect x=10 y=30 w=35 h=40 fill=#e8f0fe stroke=#333 stroke-w=1 /><text x=27 y=55\n                            text-anchor=middle font-size=6 fill=#333>h</text>\n                        <rect x=140 y=5 w=30 h=65 fill=#fce4e4 stroke=#333 stroke-w=1 /><text x=155 y=40\n                            text-anchor=middle font-size=6 fill=#333>H</text>\n                        <line x1=45 y1=30 x2=140 y2=5 stroke=#c0392b stroke-w=1 stroke-dasharray=3 /><text x=80 y=16\n                            font-size=6 fill=#c0392b>θ₁</text>\n                        <line x1=45 y1=70 x2=140 y2=70 stroke=#999 stroke-w=.8 /><text x=88 y=68 font-size=6\n                            fill=#555>d</text>\n                        <line x1=10 y1=70 x2=140 y2=70 stroke=#999 stroke-w=.8 />\n                        <line x1=45 y1=70 x2=140 y2=5 stroke=#2980b9 stroke-w=1 stroke-dasharray=3 /><text x=70 y=58\n                            font-size=6 fill=#2980b9>θ₂</text>\n                    </svg>\n                    <div class=ex><strong>Q:</strong> h=680m, θ₁=45°(top), θ₂=60°(foot) → d=680/(√3−1) → H=340(3+√3)\n                    </div>\n                </div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 15,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>📍 Extra: Graph · 463y · Angles <span class=cnt>3 Qs</span></div>\n            <div class=c>\n                <div class=fb><strong>Line→Axes Intercepts</strong><br>57x−19y=399<br>x-int: y=0 → x=7 → (7,0)<br>y-int:\n                    x=0 → y=−21 → (0,−21)</div>\n                <div class=fb><strong>463y divisible by 7</strong><br>y=4 → 4634: 463−8=455 → 45−10=35 ✓</div>\n                <div class=fb><strong>Complementary Angles</strong><br>Two angles summing to 60° with given ratio →\n                    45°&amp;15°</div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 16,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>🔮 PREDICTED: Future Identities for SSC CGL <span class=cnt>⭐ Must Add</span></div>\n            <div class=c>\n                <div class=fb><strong>🧮 Surds &amp; Indices</strong><br>a<sup>m</sup>·a<sup>n</sup>=a<sup>m+n</sup> ·\n                    a<sup>m</sup>/a<sup>n</sup>=a<sup>m−n</sup> ·\n                    (a<sup>m</sup>)<sup>n</sup>=a<sup>mn</sup><br>a<sup>0</sup>=1 · a<sup>−m</sup>=1/a<sup>m</sup> ·\n                    a<sup>m/n</sup>=ⁿ√a<sup>m</sup><br><u>Rationalize:</u> 1/(√a+√b) =\n                    (√a−√b)/(a−b)<br><u>Componendo-Dividendo:</u> a/b=c/d → (a+b)/(a−b)=(c+d)/(c−d)</div>\n\n                <div class=fb><strong>🧮 Algebraic Identities</strong><br>(a+b)³ = a³+b³+3ab(a+b)<br>(a−b)³ =\n                    a³−b³−3ab(a−b)<br>a³+b³ = (a+b)(a²−ab+b²)<br>a³−b³ = (a−b)(a²+ab+b²)<br>a²+b²+c²−ab−bc−ca =\n                    ½[(a−b)²+(b−c)²+(c−a)²]<br>If a+b+c=0 → a³+b³+c³=3abc</div>\n\n                <div class=fb><strong>🧮 Quadratic Equations</strong><br>ax²+bx+c=0 → x=[−b±√(b²−4ac)]/2a<br>Sum of\n                    roots = −b/a · Product = c/a<br>Discriminant D=b²−4ac<br>D&gt;0→real&amp;distinct ·\n                    D=0→real&amp;equal · D&lt;0→imaginary<br>α²+β² = (α+β)²−2αβ</div>\n\n                <div class=fb><strong>🧮 Trigonometry (All)</strong><br>sin²θ+cos²θ=1 · sec²θ−tan²θ=1 ·\n                    cosec²θ−cot²θ=1<br>sin0=0, sin30=½, sin45=½√2, sin60=½√3, sin90=1<br>cos0=1, cos30=½√3, cos45=½√2,\n                    cos60=½, cos90=0<br>tanθ=sinθ/cosθ · cotθ=1/tanθ<br>sin(90−θ)=cosθ ·\n                    tan(90−θ)=cotθ<br>sin(A±B)=sinAcosB±cosAsinB<br>cos(A±B)=cosAcosB∓sinAsinB</div>\n\n                <div class=fb><strong>🧮 Mensuration (Complete)</strong><br><u>Circle:</u> Area=πr²,\n                    C=2πr<br><u>Sphere:</u> SA=4πr², V=4/3πr³<br><u>Cone:</u> V=⅓πr²h, CSA=πrl, TSA=πr(l+r),\n                    l=√(r²+h²)<br><u>Cube:</u> V=a³, SA=6a², Diagonal=a√3<br><u>Cuboid:</u> V=lbh, SA=2(lb+bh+hl),\n                    Diag=√(l²+b²+h²)<br><u>Hemisphere:</u> CSA=2πr², TSA=3πr², V=⅔πr³</div>\n\n                <div class=fb><strong>🧮 Statistics (Extra)</strong><br>Range = Max−Min<br>Variance σ² =\n                    Σ(x−x̄)²/n<br>Std Dev σ = √σ²<br>CV = (σ/x̄)×100%</div>\n\n                <div class=fb><strong>🧮 Number System (Extra)</strong><br>Digital Root / Casting out 9s<br>Unit digit\n                    patterns: 2⁴ⁿ→6, 3⁴ⁿ→1, 4²ⁿ→6, 7⁴ⁿ→1, 8⁴ⁿ→6, 9²ⁿ→1<br>Number of factors: if N=aᵖ·bᵟ →\n                    (p+1)(q+1)<br>Sum of factors = (aᵖ⁺¹−1)/(a−1) × (bᵟ⁺¹−1)/(b−1)</div>\n\n                <div class=fb><strong>🧮 Data Interpretation</strong><br>% change = (New−Old)/Old × 100<br>Ratio from\n                    pie = angle₁/angle₂<br>Weighted avg = Σwᵢxᵢ/Σwᵢ</div>\n\n                <div class=fb><strong>🧮 Permutation &amp; Combination</strong><br>ⁿPᵣ = n!/(n−r)!<br>ⁿCᵣ =\n                    n!/[r!(n−r)!]<br>ⁿC₀+ⁿC₁+...+ⁿCₙ = 2ⁿ<br>Circular permutation = (n−1)!</div>\n\n                <div class=fb><strong>🧮 Logarithms</strong><br>log(mn)=log m+log n<br>log(m/n)=log m−log n<br>log\n                    mⁿ=n·log m<br>logₐb=1/log_ba<br>logₐa=1 · logₐ1=0</div>\n\n                <div class=fb><strong>🧮 Inequalities</strong><br>AM ≥ GM ≥ HM<br>AM = (a+b)/2, GM = √(ab), HM =\n                    2ab/(a+b)<br>For a,b&gt;0: AM ≥ GM (equality when a=b)<br>a²+b² ≥ 2ab</div>\n\n                <div class=fb><strong>🧮 Calendar &amp; Clock</strong><br>Odd days: yr÷7 remainder. Normal yr=1OD,\n                    Leap=2OD<br>Century: 100yr=5OD, 400yr=0OD<br>Clock: Minute hand speed=6°/min, Hour=0.5°/min</div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        },
+        {
+            "id": 17,
+            "section": "Quantitative Aptitude",
+            "question": "<div class=card>\n            <div class=ch>⚡ Mental Math Super-Fast <span class=cnt>Apply to ALL</span></div>\n            <div class=three-col>\n                <div class=fb><strong>Fractions↔%</strong><br>½=50% · ⅓=33.33% · ¼=25%<br>⅕=20% · ⅙=16.67% · ⅛=12.5%\n                </div>\n                <div class=fb><strong>Square ending in 5</strong><br>35²=3×4→12 25=1225<br>85²=8×9→72 25=7225</div>\n                <div class=fb><strong>Speed → m/s↔km/h</strong><br>×5/18 or ×18/5</div>\n                <div class=fb><strong>% Change</strong><br>a+b+ab/100 (for increase)<br>a+b−ab/100 (discount)</div>\n                <div class=fb><strong>Ratio Chain</strong><br>A:B=x:y, B:C=p:q → A:B:C=xp:yp:yq</div>\n                <div class=fb><strong>CP/SP</strong><br>P%=(SP−CP)/CP×100<br>L%=(CP−SP)/CP×100</div>\n                <div class=fb><strong>Digital Root</strong><br>Sum digits till 1 digit. Great for divisibility.</div>\n                <div class=fb><strong>Unit Digit Cyclicity</strong><br>2:2,4,8,6 · 3:3,9,7,1 · 4:4,6 · 7:7,9,3,1 ·\n                    8:8,4,2,6 · 9:9,1</div>\n                <div class=fb><strong>Estimation Trick</strong><br>Round to nearest 10/100 for quick approx, then\n                    adjust.</div>\n            </div>\n        </div>",
+            "options": [
+            "A",
+            "",
+            "",
+            ""
+            ],
+            "correct_answer": "A"
+        }
+        ]
+    },
     "ssc-cgl-tier-i-12-sep-2025-shift-2-paper": {
         "title": "Combined Graduate level Examination 2025 Tier I",
         "exam_level": "Tier-I",
